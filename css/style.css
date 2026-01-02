@@ -1,0 +1,126 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FFFFF4;
+  color: #242424;
+  font-family: 'DM Mono', monospace;
+  overflow: hidden; /* cada columna tendrá su propio scroll */
+  cursor: none;
+}
+
+h1, h2 {
+  font-family: 'TeX Gyre Heros', sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.03em; /* -3% */
+  color: #242424;
+}
+
+a {
+  color: rgba(36,36,36,0.4);
+  text-decoration: none;
+  font-size: .8rem;
+}
+
+
+
+/* Cursor principal */
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: visible;
+  mix-blend-mode: difference;
+}
+
+/* Barra de navegación */
+
+/* Logo grande inicial */
+.logo {
+  position: fixed;
+  top: 2rem;
+  left: 1rem;
+  width: 64vw;        /* tamaño inicial grande */
+  transform-origin: left top;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.logo-placeholder {
+  width: 120px;
+}
+
+/* Navbar sticky */
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.nav-links a {
+  font-family: 'DM Mono', sans-serif;
+  text-transform: uppercase;
+  margin-left: 30px;
+  color: rgba(36,36,36,0.4);
+  text-decoration: none;
+}
+
+
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.column {
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.left {
+  flex: 2; /* 2/3 */
+}
+
+.column.left {
+  overflow-y: auto;
+  height: 100vh;
+  position: relative;
+}
+
+.separator {
+  width: 0.75pt;                 /* grosor de la línea */
+  background-color: rgba(36,36,36,0.4);
+  margin: 1rem 0;                /* margen superior e inferior */
+}
+
+.right {
+  flex: 1; /* 1/3 */
+}
+
+.column::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .left, .right {
+    flex: none;
+    height: 50vh;
+    border-right: none;
+    border-bottom: 0.75pt solid rgba(36,36,36,0.4);
+  }
+}
