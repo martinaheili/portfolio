@@ -14,11 +14,17 @@ body {
   cursor: none;
 }
 
-h1, h2 {
+h1 {
   font-family: 'TeX Gyre Heros', sans-serif;
   font-weight: bold;
   letter-spacing: -0.03em; /* -3% */
   color: #242424;
+}
+
+h2 {
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  font-size: .8rem;
 }
 
 a {
@@ -45,9 +51,9 @@ a {
 /* Logo grande inicial */
 .logo {
   position: fixed;
-  top: 2rem;
+  top: 1rem;
   left: 1rem;
-  width: 64vw;        /* tamaño inicial grande */
+  width: 70vw;        /* tamaño inicial grande */
   transform-origin: left top;
   z-index: 100;
   pointer-events: none;
@@ -68,11 +74,18 @@ a {
 }
 
 .nav-links a {
-  font-family: 'DM Mono', sans-serif;
+  font-family: 'DM Mono', monospace;
   text-transform: uppercase;
-  margin-left: 30px;
-  color: rgba(36,36,36,0.4);
+  margin-left: 20px;
+  font-size: .8rem;
   text-decoration: none;
+  color: rgba(36,36,36,0.4);
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: #242424; /* negro sólido */
 }
 
 
@@ -89,7 +102,7 @@ a {
 }
 
 .left {
-  flex: 2; /* 2/3 */
+  flex: 3; /* 3/4 */
 }
 
 .column.left {
@@ -105,11 +118,129 @@ a {
 }
 
 .right {
-  flex: 1; /* 1/3 */
+  flex: 1; /* 1/4 */
 }
 
 .column::-webkit-scrollbar {
   display: none;  /* Chrome, Safari, Opera */
+}
+
+
+/* Números decorativos a los lados */
+.side-numbers {
+  position: absolute;
+  top: 5vh; /* mismo inicio que tus palabras flotantes */
+  bottom: 0;
+  width: auto;
+  pointer-events: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(36,36,36,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.left-numbers {
+  left: 0;
+  padding-left: 1rem;
+}
+
+.right-numbers {
+  right: 0;
+  padding-right: 1rem;
+}
+
+.side-numbers span {
+  line-height: 2.5em;
+}
+
+
+/* Floating Words */
+.floating-words {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'DM Mono', monospace;
+}
+
+.floating-words .words-container {
+  position: absolute;
+  top: 38vh;      /* empieza debajo del logo */
+  bottom: 8vh;    /* termina antes del padding inferior */
+  left: 2rem;
+  right: 2rem;
+}
+
+.floating-words span {
+  position: absolute;
+  text-transform: uppercase;
+  font-size: .8rem;
+  color: #000;
+  cursor: default;
+  user-select: none;
+}
+
+
+
+
+/* Sección de proyectos */
+
+.content h2 {
+  padding-left: 2rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem 3rem; /* Espacio entre proyectos */
+  margin: 1rem;
+  justify-content: center;
+}
+
+.project-link {
+  display: block;
+  flex: 0 1 200px; /* base mínima */
+}
+
+.project-extralarge {
+  flex: 0 1 85%; /* más grande */
+}
+
+.project-large {
+  flex: 0 1 55%; /* más grande */
+}
+
+.project-medium {
+  flex: 0 1 45%; /* tamaño intermedio */
+}
+
+.project-small {
+  flex: 0 1 30%; /* más pequeño */
+}
+
+.project-rotate-right {
+  transform: rotate(3deg);
+}
+
+.project-rotate-left {
+  transform: rotate(-3deg);
+}
+
+.project-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover (opcional) */
+.project-link:hover img {
+  transform: scale(1.05) rotate(3deg);
 }
 
 /* Responsivo */
