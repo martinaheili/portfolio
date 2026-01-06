@@ -15,7 +15,7 @@ body {
 }
 
 h1 {
-  font-family: 'TeX Gyre Heros', sans-serif;
+  font-family: 'TeX Gyre Heros Cn', sans-serif;
   font-weight: bold;
   letter-spacing: -0.03em; /* -3% */
   color: #242424;
@@ -126,6 +126,11 @@ a {
 }
 
 
+
+
+
+
+
 /* Números decorativos a los lados */
 .side-numbers {
   position: absolute;
@@ -196,7 +201,7 @@ a {
 .projects {
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem 3rem; /* Espacio entre proyectos */
+  gap: 7rem 3rem; /* Espacio entre proyectos */
   margin: 1rem;
   justify-content: center;
 }
@@ -207,7 +212,7 @@ a {
 }
 
 .project-extralarge {
-  flex: 0 1 85%; /* más grande */
+  flex: 0 1 83%; /* más grande */
 }
 
 .project-large {
@@ -215,7 +220,7 @@ a {
 }
 
 .project-medium {
-  flex: 0 1 45%; /* tamaño intermedio */
+  flex: 0 1 43%; /* tamaño intermedio */
 }
 
 .project-small {
@@ -237,6 +242,7 @@ a {
   object-fit: cover;
   transition: transform 0.3s ease;
 }
+
 
 /* Efecto hover (opcional) */
 .project-link:hover img {
