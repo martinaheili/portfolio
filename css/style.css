@@ -151,7 +151,11 @@ a {
 /* navbar dentro del rectángulo */
 .fixed-bar .nav-links {
   display: flex;
-  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 13px 16px;
 }
 
 /* links */
@@ -170,9 +174,31 @@ a {
   display: block;
 }
 
+.nav-items {
+  display: flex;
+  gap: 24px;
+}
+
 .fixed-bar .nav-links a:hover,
 .fixed-bar .nav-links a:focus-visible {
   color: #ffffff;
+}
+
+.footer-cta {
+  position: absolute;
+  bottom: -30px;
+  left: 1%;
+  width: 100%;
+
+  font-family: 'TeX Gyre Heros Cn', sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.06em; /* -3% */
+  font-size: 14vw;
+  color: #FFFFF4;
+
+  opacity: 0; /* empieza invisible */
+  pointer-events: none; /* no interfiere con clicks */
+  transition: opacity 0.4s ease-out;
 }
 
 
@@ -181,7 +207,7 @@ a {
 /* Números decorativos a los lados */
 .side-numbers {
   position: absolute;
-  top: 5vh; /* mismo inicio que tus palabras flotantes */
+  top: 1vh; /* mismo inicio que tus palabras flotantes */
   bottom: 0;
   width: auto;
   pointer-events: none;
@@ -294,6 +320,11 @@ a {
 /* Efecto hover (opcional) */
 .project-link:hover img {
   transform: scale(1.05) rotate(3deg);
+}
+
+
+.spacer {
+  height: 18rem; /* espacio al final de la página */
 }
 
 /* Responsivo */
