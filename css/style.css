@@ -1,4 +1,8 @@
 /* Reset básico */
+
+:root {
+  --bar-expanded-height: 60vh;
+}
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +45,7 @@ a {
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   overflow: visible;
   mix-blend-mode: difference;
 }
@@ -64,16 +68,16 @@ a {
 }
 
 /* Navbar sticky */
-.navbar {
+/* .navbar {
   position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 10;
-}
+} */
 
-.nav-links a {
+/* .nav-links a {
   font-family: 'DM Mono', monospace;
   text-transform: uppercase;
   margin-left: 20px;
@@ -81,12 +85,12 @@ a {
   text-decoration: none;
   color: rgba(36,36,36,0.4);
   transition: color 0.2s ease;
-}
+} */
 
-.nav-links a:hover,
+/* .nav-links a:hover,
 .nav-links a:focus-visible {
   color: #242424; /* negro sólido */
-}
+
 
 
 
@@ -126,7 +130,50 @@ a {
 }
 
 
+/* nav bar fixed flotante */
+.fixed-bar {
+  position: fixed;
+  bottom: 15px;
+  left: 25%;
+  width: 25vw;
+  height: 40px;
+  background: rgb(36, 36, 36);
+  z-index: 9999;
+  border-radius: 1px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden; /* importante */
+}
+
+/* navbar dentro del rectángulo */
+.fixed-bar .nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* links */
+.fixed-bar .nav-links a {
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: #FFFFF4;
+  transition: color 0.2s ease;
+}
+
+.nav-logo {
+  height: 1vw;        
+  width: auto;
+  display: block;
+}
+
+.fixed-bar .nav-links a:hover,
+.fixed-bar .nav-links a:focus-visible {
+  color: #ffffff;
+}
 
 
 
@@ -173,7 +220,7 @@ a {
 .floating-words .words-container {
   position: absolute;
   top: 38vh;      /* empieza debajo del logo */
-  bottom: 8vh;    /* termina antes del padding inferior */
+  bottom: 10vh;    /* termina antes del padding inferior */
   left: 2rem;
   right: 2rem;
 }
