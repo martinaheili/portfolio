@@ -117,7 +117,7 @@ a {
 
 .separator {
   width: 0.75pt;                 /* grosor de la línea */
-  background-color: rgba(36,36,36,0.4);
+  background-color: rgba(36,36,36,0.15);
   margin: 1rem 0;                /* margen superior e inferior */
 }
 
@@ -185,20 +185,52 @@ a {
 }
 
 .footer-cta {
+    position: absolute;
+    bottom: -13%;
+
+    opacity: 0;           /* empieza invisible */
+    pointer-events: none;  /* no interactúa hasta que se muestre */
+}
+
+.footer-cta a {
+    font-family: 'TeX Gyre Heros Cn', sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+    font-size: 14.5vw;
+
+    color: #FFFFF4;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+.social-icons {
   position: absolute;
-  bottom: -30px;
-  left: 1%;
-  width: 100%;
+  bottom: 60%;
+  display: flex;
+  gap: 2rem;
 
-  font-family: 'TeX Gyre Heros Cn', sans-serif;
-  font-weight: bold;
-  letter-spacing: -0.06em; /* -3% */
-  font-size: 14vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.social-icons a {
   color: #FFFFF4;
+  font-size: 1.2rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
 
-  opacity: 0; /* empieza invisible */
-  pointer-events: none; /* no interfiere con clicks */
-  transition: opacity 0.4s ease-out;
+.social-icons a:hover {
+  opacity: 0.7;
+}
+
+
+
+
+/* cuando el footer está expandido */
+.fixed-bar[style*="height"] .footer-cta {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 
@@ -245,7 +277,7 @@ a {
 
 .floating-words .words-container {
   position: absolute;
-  top: 38vh;      /* empieza debajo del logo */
+  top: 40vh;      /* empieza debajo del logo */
   bottom: 10vh;    /* termina antes del padding inferior */
   left: 2rem;
   right: 2rem;
@@ -326,6 +358,93 @@ a {
 .spacer {
   height: 18rem; /* espacio al final de la página */
 }
+
+
+
+
+/* Sección de sobre mi */
+/* bloques */
+.about-block {
+  margin-bottom: 2.5rem;
+}
+
+/* separadores */
+.column.right hr {
+  border: none;
+  height: 1px;
+  background: rgba(36, 36, 36, 0.15);
+  margin: 20px 0;
+}
+
+/* títulos */
+.about-block h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  color: rgba(36, 36, 36, 0.6);
+}
+
+/* párrafos */
+.about-block p {
+  margin-bottom: 1.2rem;
+  max-width: 520px;
+  font-size: 0.8rem;
+}
+
+/* descripciones secundarias */
+.about-block p span {
+  color: rgba(36, 36, 36, 0.6);
+  font-size: 0.7rem;
+}
+
+/* fake input en experiencia */
+.fake-input {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.fake-input input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(36,36,36,0.15);
+  padding: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: #242424;
+}
+
+.fake-input input::placeholder {
+  color: rgba(36,36,36,0.4);
+}
+
+.fake-confirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: 1px solid rgba(36,36,36,0.15);
+  padding: 10px 14px;
+
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #242424;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fake-confirm:hover {
+  background: #242424;
+  color: #FFFFF4;
+}
+
+
+
 
 /* Responsivo */
 @media (max-width: 768px) {

@@ -1,5 +1,7 @@
 const bar = document.querySelector(".fixed-bar");
 const cta = document.querySelector(".footer-cta");
+const icons = document.querySelector(".social-icons");
+const logoLink = document.querySelector(".nav-links a");
 
 const initialWidth = "25vw";
 const initialLeft = "25%";
@@ -23,7 +25,7 @@ function updateBar() {
     if (!expanded) {
       expanded = true;
 
-      // animación del rectángulo
+      // expandir rectángulo
       gsap.to(bar, {
         width: colRect.width - sideMargin * 2,
         left: colRect.left + sideMargin,
@@ -32,18 +34,29 @@ function updateBar() {
         ease: "power2.out"
       });
 
-      // animación de opacidad del texto
+      // mostrar iconos
+      gsap.to(icons, {
+        opacity: 1,
+        pointerEvents: "auto",
+        duration: 0.4,
+        ease: "power2.out",
+        delay: 0.1
+      });
+
+      // mostrar CTA
       gsap.to(cta, {
         opacity: 1,
-        duration: 0.5,
+        pointerEvents: "auto",
+        duration: 0.4,
         ease: "power2.out",
+        delay: 0.15
       });
     }
   } else {
     if (expanded) {
       expanded = false;
 
-      // volver al estado inicial del rectángulo
+      // volver a estado inicial
       gsap.to(bar, {
         width: initialWidth,
         left: initialLeft,
@@ -52,10 +65,19 @@ function updateBar() {
         ease: "power2.out"
       });
 
-      // desaparecer el texto suavemente
+      // ocultar iconos
+      gsap.to(icons, {
+        opacity: 0,
+        pointerEvents: "none",
+        duration: 0.2,
+        ease: "power2.in"
+      });
+
+      // ocultar CTA
       gsap.to(cta, {
         opacity: 0,
-        duration: 0,
+        pointerEvents: "none",
+        duration: 0.2,
         ease: "power2.in"
       });
     }
@@ -65,14 +87,9 @@ function updateBar() {
 leftCol.addEventListener("scroll", updateBar);
 window.addEventListener("resize", updateBar);
 
-
-
-// scroll to top
-const logoLink = document.querySelector(".nav-links a"); // selecciona el <a> que envuelve al logo
-
+// scroll to top desde el logo
 logoLink.addEventListener("click", (e) => {
-  e.preventDefault(); // evita el comportamiento por defecto
-
+  e.preventDefault();
   leftCol.scrollTo({
     top: 0,
     behavior: "smooth"
