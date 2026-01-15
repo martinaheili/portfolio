@@ -171,53 +171,6 @@ window.addEventListener("mousemove", e => {
 
 
 
-// ==========================
-// Números laterales hasta el final real de la columna
-// ==========================
-function createSideNumbers() {
-  const leftContainer = document.querySelector('.left-numbers');
-  const rightContainer = document.querySelector('.right-numbers');
-  const column = document.querySelector('.column.left');
-
-  leftContainer.innerHTML = '';
-  rightContainer.innerHTML = '';
-
-  // Calculamos la altura real del contenido
-  let maxHeight = 0;
-  column.querySelectorAll('*').forEach(el => {
-    const bottom = el.offsetTop + el.offsetHeight;
-    if (bottom > maxHeight) maxHeight = bottom;
-  });
-
-  const numberSpacing = 60; // px entre números
-  const count = Math.ceil(maxHeight / numberSpacing);
-
-  for (let i = 1; i <= count; i++) {
-    const numText = i.toString().padStart(2, '0');
-
-    const spanLeft = document.createElement('span');
-    spanLeft.textContent = numText;
-    leftContainer.appendChild(spanLeft);
-
-    const spanRight = document.createElement('span');
-    spanRight.textContent = numText;
-    rightContainer.appendChild(spanRight);
-  }
-}
-
-// Crear números al cargar
-window.addEventListener('load', createSideNumbers);
-
-// Actualizar al redimensionar (debounce)
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(createSideNumbers, 200);
-});
-
-
-
-
 
 // ======= ANIMACIÓN DE PROYECTOS AL ENTRAR EN VIEWPORT (replay al hacer scroll) =======
 gsap.utils.toArray('.project-link').forEach(link => {
@@ -237,3 +190,53 @@ gsap.utils.toArray('.project-link').forEach(link => {
 
 
 
+
+
+// ABRIR Y CERRAR PANEL "SOBRE MÍ" EN MÓVIL
+const rightPanel = document.querySelector(".column.right");
+const sobreMiBtn = document.querySelector(".nav-link[href='#sobre-mi']");
+const closePanelBtn = rightPanel.querySelector(".close-panel");
+
+let panelOpen = false;
+
+// Función para abrir panel
+function openPanel() {
+  if (!panelOpen) {
+    panelOpen = true;
+    gsap.to(rightPanel, { right: 0, duration: 0.3, ease: "power2.out" });
+    document.body.style.overflow = "hidden"; // opcional: bloquea scroll del body mientras el panel esté abierto
+  }
+}
+
+// Función para cerrar panel
+function closePanel() {
+  if (panelOpen) {
+    panelOpen = false;
+    gsap.to(rightPanel, { right: "-100%", duration: 0.3, ease: "power2.in" });
+    document.body.style.overflow = ""; // desbloquea scroll
+  }
+}
+
+// Abrir panel al click sobre "Sobre mí" en móviles
+sobreMiBtn.addEventListener("click", (e) => {
+  if (window.innerWidth <= 800) {
+    e.preventDefault();
+    openPanel();
+  }
+});
+
+// Cerrar panel al click en la cruz
+closePanelBtn.addEventListener("click", closePanel);
+
+// Cerrar panel al click fuera del panel
+document.addEventListener("click", (e) => {
+  if (panelOpen && window.innerWidth <= 800) {
+    // si el click no es dentro del panel ni sobre el botón "Sobre mí"
+    if (!rightPanel.contains(e.target) && !sobreMiBtn.contains(e.target)) {
+      closePanel();
+    }
+  }
+});
+
+// Evitar que clicks dentro del panel cierren al propagarse
+rightPanel.addEventListener("click", (e) => e.stopPropagation());

@@ -13,7 +13,7 @@
 <body>
     
   <!-- LOGO GLOBAL (fuera de columnas) -->
-  <img class="logo" src="media/logo.svg" alt="Logo">
+  <img class="logo" alt="Logo">
 
   <div id="top"></div>
 
@@ -107,16 +107,14 @@
 
       </div>
 
-    <!-- Números decorativos a los lados -->
-    <div class="side-numbers left-numbers"></div>
-    <div class="side-numbers right-numbers"></div>
-
     </div>
 
     <div class="separator"></div>
 
 <!-- Columna derecha: Sobre mí -->
       <div class="column right">
+
+        <div class="close-panel">×</div>
 
         <section class="about-block">
           <p>Martina Heili
@@ -228,12 +226,16 @@
     <nav class="nav-links">
       
       <a href="#top">
-        <img src="media/logo_light.svg" alt="Martina logo light" class="nav-logo" />
+        <img class="nav-logo" alt="Martina logo">
       </a>
 
       <div class="nav-items">
         <a href="#sobre-mi" class="nav-link"><span>SOBRE MI</span></a>
         <a href="contact.html" class="nav-link"><span>CONTACTO</span></a>
+          <!-- Toggle dark / light -->
+        <button class="theme-toggle" aria-label="Cambiar tema">
+          <i class="bi bi-moon"></i>
+        </button>
       </div>
     </nav>
 
@@ -263,5 +265,6 @@
     <!-- Tu JS principal -->
     <script src="js/main.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
