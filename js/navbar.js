@@ -20,7 +20,7 @@ function getBarInitialSizes() {
   if (widthScreen <= 480) {
     // móviles muy pequeños: barra casi completa
     return { width: "90vw", left: "4.2%", height: 50 };
-  } else if (widthScreen <= 1024) {
+  } else if (widthScreen <= 820) {
     // tablets / móviles grandes
     return { width: "60vw", left: "20%", height: 50 };
   } else if (widthScreen >= 1025 && widthScreen <= 1920) {

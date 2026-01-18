@@ -219,7 +219,7 @@ function closePanel() {
 
 // Abrir panel al click sobre "Sobre mí" en móviles
 sobreMiBtn.addEventListener("click", (e) => {
-  if (window.innerWidth <= 800) {
+  if (window.innerWidth <= 820) {
     e.preventDefault();
     openPanel();
   }
@@ -230,7 +230,7 @@ closePanelBtn.addEventListener("click", closePanel);
 
 // Cerrar panel al click fuera del panel
 document.addEventListener("click", (e) => {
-  if (panelOpen && window.innerWidth <= 800) {
+  if (panelOpen && window.innerWidth <= 820) {
     // si el click no es dentro del panel ni sobre el botón "Sobre mí"
     if (!rightPanel.contains(e.target) && !sobreMiBtn.contains(e.target)) {
       closePanel();
