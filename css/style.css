@@ -469,6 +469,52 @@ a {
   white-space: nowrap;
 }
 
+/* AUDIO MOOD - BOTÓN ESTILO MARTINA */
+.project-audio {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-audio .audio-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: transparent;
+  border: 1px solid var(--line-soft);
+  padding: 8px 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  color: var(--text-main);
+}
+
+.project-audio .audio-play i {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.project-audio .audio-play.playing {
+  background-color: var(--text-main);
+  color: var(--bg-main);
+  border-color: var(--text-main);
+}
+
+.project-audio .audio-play:hover {
+  background-color: var(--text-main);
+  color: var(--bg-main);
+  transform: translateY(-1px);
+}
+
+.project-audio .audio-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
 
 /* ---------------------------- MEDIA QUERIES ---------------------------- */
 

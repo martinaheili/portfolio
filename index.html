@@ -23,14 +23,6 @@
 
       <header class="navbar">
         <div class="logo-placeholder"></div>
-          <!-- <nav class="nav-links">
-            <a href="#sobre-mi" class="nav-link">
-              <span>SOBRE MI</span>
-            </a>
-            <a href="#contacto" class="nav-link">
-              <span>CONTACTO</span>
-            </a>
-          </nav> -->
       </header>
 
       <!-- Sección de palabras flotantes -->
@@ -56,52 +48,83 @@
             data-project="permanent-smile">
             <img src="media/chinito/chinito1.png" alt="Permanent Smile">
           </a>
-          <a href="#" class="project-link project-medium">
+          <a href="#"
+             class="project-link project-medium"
+             data-project="permanent-smile">
             <img src="media/chinito/chinito2.png" alt="Proyecto 1">
           </a>
-          <a href="#" class="project-link project-large project-rotate-right">
+          <a href="#"
+             class="project-link project-large project-rotate-right"
+             data-project="permanent-smile">
             <img src="media/chinito/chinito3.png" alt="Proyecto 1">
           </a>
-          <a href="#" class="project-link project-extralarge">
+          <a href="#"
+          class="project-link project-extralarge"
+          data-project="permanent-smile">
             <img src="media/chinito/chinito4.png" alt="Proyecto 1">
           </a>
-          <a href="#" class="project-link project-medium">
+          <a href="#" class="project-link project-medium" data-project="permanent-smile">
             <img src="media/chinito/chinito5.png" alt="Proyecto 1">
           </a>
-          <a href="#" class="project-link project-medium">
+          <a href="#" class="project-link project-medium" data-project="permanent-smile">
             <img src="media/chinito/chinito6.png" alt="Proyecto 1">
           </a>
 
         <!-- drift -->
 
-          <a href="#" class="project-link project-large">
+          <a href="#"
+             class="project-link project-large"
+             data-project="drift">
             <img src="media/drift/drift1.png" alt="Proyecto 2">
           </a>
-          <a href="#" class="project-link project-medium project-rotate-left">
+          <a href="#"
+             class="project-link project-medium project-rotate-left"
+             data-project="drift">
             <img src="media/drift/drift2.png" alt="Proyecto 2">
           </a>
-          <a href="#" class="project-link project-medium">
+          <a href="#"
+             class="project-link project-medium"
+             data-project="drift">
             <img src="media/drift/drift3.png" alt="Proyecto 2">
           </a>
-          <a href="#" class="project-link project-extralarge">
+          <a href="#"
+             class="project-link project-extralarge" data-project="drift">
             <img src="media/drift/drift4.png" alt="Proyecto 2">
           </a>
 
 
         <!-- trap -->
 
-          <a href="#" class="project-link project-medium">
+          <a href="#" class="project-link project-medium" data-project="trap">
             <img src="media/trap/trap1.png" alt="Proyecto 3">
           </a>
-          <a href="#" class="project-link project-medium project-rotate-left">
+          <a href="#" class="project-link project-medium project-rotate-left" data-project="trap">
             <img src="media/trap/trap2.png" alt="Proyecto 3">
           </a>
-          <a href="#" class="project-link project-large project-rotate-left">
+          <a href="#" class="project-link project-large project-rotate-left" data-project="trap">
             <img src="media/trap/trap4.png" alt="Proyecto 3">
           </a>
-          <a href="#" class="project-link project-small project-rotate-right">
+          <a href="#" class="project-link project-small project-rotate-right" data-project="trap">
             <img src="media/trap/trap3.png" alt="Proyecto 3">
           </a>
+
+        <!-- pantera rosa -->
+
+          <a href="#" class="project-link project-medium project-rotate-right" data-project="panterarosa">
+            <img src="media/panterarosa/pantera1.png" alt="Pantera Rosa">
+          </a>
+
+        <a href="#"
+          class="project-link project-medium project-rotate-left"
+          data-project="panterarosa">
+          <img src="media/panterarosa/pantera2.png" alt="Pantera Rosa">
+        </a>
+
+        <a href="#"
+          class="project-link project-extralarge project-rotate-left"
+          data-project="panterarosa">
+          <img src="media/panterarosa/pantera3.png" alt="Pantera Rosa">
+        </a>
 
         </section>
 
@@ -131,11 +154,7 @@
 
         <section class="about-block">
           <p>
-            Soy diseñadora gráfica con un enfoque en branding, packaging y diseño editorial.
-            Me apasiona crear identidades visuales con personalidad, cuidando cada detalle
-            para que el resultado no solo se vea bien, sino que tenga una razón de ser.
-            Me muevo entre el diseño mainstream y lo experimental, siempre buscando ese
-            equilibrio entre lo funcional y lo innovador.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit pharetra massa. Fusce aliquet commodo tempor. Fusce rhoncus leo eu metus semper, vitae varius odio porttitor. Ut nec quam ex. Maecenas dapibus nec velit tristique porta. Curabitur non viverra tortor. Phasellus in aliquam tortor, ac consectetur velit. Nullam efficitur venenatis maximus.
           </p>
         </section>
 
@@ -214,7 +233,7 @@
 
 
                 <!-- PROJECT DETAIL (hidden by default) -->
-        <section class="project-detail" id="project-detail" hidden>
+        <section class="project-detail" data-project="permanent-smile" hidden>
 
           <a href="permanent-smile.html"
             class="project-expand"
@@ -257,8 +276,162 @@
             <img src="media/chinito/catalogue.webp" alt="Catalogue">
             <img src="media/chinito/catalogue.gif" alt="Catalogue gif">
             <img src="media/chinito/ticket.webp" alt="Ticket">
-            <img src="media/chinito/banner.jpg" alt="Banners">
+            <img src="media/chinito/banner.webp" alt="Banners">
             <img src="media/chinito/billboard.webp" alt="Billboard">
+          </div>
+
+        </section>
+
+        <!-- PROJECT DETAIL — DRIFT -->
+        <section class="project-detail" data-project="drift" hidden>
+
+          <a href="drift.html"
+            class="project-expand"
+            aria-label="Ver proyecto en pantalla completa">
+            <i class="bi bi-arrows-fullscreen"></i>
+          </a>
+
+          <h2>
+            <a href="drift.html" class="project-title">
+              <span class="scramble-text">(drift) — packaging</span>
+            </a>
+          </h2>
+
+          <p class="project-tags">
+            Branding — Packaging
+          </p>
+
+          <p class="project-desc">
+            (drift) es un hard seltzer diseñado para una generación que busca más que
+            solo una bebida: busca una experiencia.
+          </p>
+
+          <p class="project-desc">
+            Pensado para un público que valora la estética, la música y la experimentación,
+            (drift) se inspira en la cultura underground y en aquellos que encuentran
+            belleza en lo inesperado.
+          </p>
+
+          <p class="project-desc">
+            Con combinaciones de sabores inesperadas y una identidad minimalista pero
+            disruptiva, (drift) no sigue las reglas tradicionales, sino que invita a dejarse
+            llevar. Es una bebida para quienes disfrutan lo sensorial, lo conceptual y lo
+            cuidadosamente diseñado.
+          </p>
+
+          <div class="project-gallery">
+            <img src="media/drift/drift8.png" alt="Drift packaging 4">
+            <img src="media/drift/drift6.png" alt="Drift packaging 2">
+            <img src="media/drift/drift7.png" alt="Drift packaging 3">
+            <img src="media/drift/drift9.png" alt="Drift packaging 4">   
+            <img src="media/drift/drift12.png" alt="Drift packaging 4">                                              
+            <img src="media/drift/drift10.png" alt="Drift packaging 4"> 
+            <img src="media/drift/drift11.png" alt="Drift packaging 4"> 
+          </div>
+
+        </section>
+
+        <!-- PROJECT DETAIL — TRAP -->
+        <section class="project-detail" data-project="trap" hidden>
+
+          <a href="trap.html"
+            class="project-expand"
+            aria-label="Ver proyecto en pantalla completa">
+            <i class="bi bi-arrows-fullscreen"></i>
+          </a>
+
+          <h2>
+            <a href="trap.html" class="project-title">
+              <span class="scramble-text">Buenos Aires Trap 2024 — Rebranding</span>
+            </a>
+          </h2>
+
+          <p class="project-tags">
+            Branding
+          </p>
+
+          <p class="project-desc">
+            Buenos Aires Trap 2024 fue un festival celebrado en diciembre de 2024 en Buenos Aires, Argentina. Reunió a algunos de los nombres más importantes de la escena global del trap. El trap es un género que ha ganado una enorme popularidad en los últimos años y, en Argentina, ha desarrollado una identidad muy marcada a través de artistas como Duki, Neo Pistea y Nicki Nicole, entre otros.
+          </p>
+
+          <p class="project-desc">
+            En mi opinión, el diseño original del festival no reflejaba la cultura del trap, ni a los artistas que participaban, ni al público que asistía. Por eso decidí rediseñar por completo la identidad visual, con el objetivo de representar mejor la esencia del género y de su comunidad.
+          </p>
+
+          <div class="project-gallery">
+            <img src="media/trap/trap5.gif" alt="Trap 5">
+            <img src="media/trap/trap6.png" alt="Trap 6">
+            <img src="media/trap/trap7.png" alt="Trap 7">
+            <img src="media/trap/trap8.png" alt="Trap 8">
+            <img src="media/trap/trap9.png" alt="Trap 9">
+            <img src="media/trap/trap10.png" alt="Trap 10">
+            <img src="media/trap/trap11.png" alt="Trap 11">                                    
+            <img src="media/trap/trap13.png" alt="Trap 13">      
+            <img src="media/trap/trap14.png" alt="Trap 14">                                   
+          </div>
+
+        </section>
+        
+        <!-- PROJECT DETAIL — PANTERA ROSA -->
+        <section class="project-detail" data-project="panterarosa" hidden>
+
+          <a href="panterarosa.html"
+            class="project-expand"
+            aria-label="Ver proyecto en pantalla completa">
+            <i class="bi bi-arrows-fullscreen"></i>
+          </a>
+
+          <h2>
+            <a href="panterarosa.html" class="project-title">
+              <span class="scramble-text">The Pink Panther - Vinyl</span>
+            </a>
+          </h2>
+
+          <p class="project-tags">
+            Branding
+          </p>
+
+          <!-- AUDIO MOOD -->
+          <div class="project-audio">
+            <span class="audio-note">
+              Te recomiendo darle play para meterte en el mood del proyecto.
+            </span>
+            <button class="audio-play" type="button">
+              <i class="bi bi-play-fill"></i>
+              <span>The Groovy Cat</span>
+            </button>
+
+
+            <audio id="groovy-audio">
+              <source src="media/panterarosa/GroovyCat.mp3" type="audio/mpeg">
+            </audio>
+
+          </div>
+
+          <p class="project-desc">
+            Teniendo la libertad de diseñar un vinilo para cualquier artista o banda reconocida,
+            decidí abordar el proyecto desde un enfoque distinto, explorando un lenguaje más
+            conceptual y surrealista.
+          </p>
+
+          <p class="project-desc">
+            El vinilo presenta una reinterpretación de The Pink Panther Soundtrack, introduciendo
+            un giro contemporáneo: todas las pistas han sido transformadas en remixes de techno,
+            conservando la melodía original como eje principal.
+          </p>
+
+          <p class="project-desc">
+            El proyecto se inspira en el remix “The Groovy Cat” de blanc, que sirvió como referencia
+            para fusionar un imaginario clásico con una estética sonora y visual actual, trasladando
+            el álbum a un nuevo contexto cultural.
+          </p>
+
+          <div class="project-gallery">
+            <img src="media/panterarosa/pantera9.webp" alt="The Pink Panther vinyl 5">
+            <img src="media/panterarosa/pantera5.webp" alt="The Pink Panther vinyl 1">
+            <img src="media/panterarosa/pantera6.webp" alt="The Pink Panther vinyl 2">
+            <img src="media/panterarosa/Pantera7.webp" alt="The Pink Panther vinyl 3">
+            <img src="media/panterarosa/pantera8.webp" alt="The Pink Panther vinyl 4">
           </div>
 
         </section>
