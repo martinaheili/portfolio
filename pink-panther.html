@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pink Panther</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style_inverted.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container inverted">
+
+  <!-- Columna izquierda -->
+  <div class="column left-text">
+
+    <section class="project-detail" data-project="panterarosa">
+      <h2>
+        <span class="scramble-text">The Pink Panther - Vinyl</span>
+      </h2>
+      <p class="project-tags">Branding</p>
+
+    <!-- AUDIO MOOD -->
+    <div class="project-audio">
+      <span class="audio-note">
+        Te recomiendo darle play para meterte en el mood del proyecto.
+      </span>
+      <button class="audio-play" type="button">
+        <i class="bi bi-play-fill"></i>
+        <span>The Groovy Cat</span>
+      </button>
+
+      <audio id="groovy-audio">
+        <source src="media/panterarosa/GroovyCat.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+      <p class="project-desc">
+        Teniendo la libertad de diseñar un vinilo para cualquier artista o banda reconocida,
+        decidí abordar el proyecto desde un enfoque distinto, explorando un lenguaje más
+        conceptual y surrealista.
+      </p>
+
+      <p class="project-desc">
+        El vinilo presenta una reinterpretación de The Pink Panther Soundtrack, introduciendo
+        un giro contemporáneo: todas las pistas han sido transformadas en remixes de techno,
+        conservando la melodía original como eje principal.
+      </p>
+
+      <p class="project-desc">
+        El proyecto se inspira en el remix “The Groovy Cat” de blanc, que sirvió como referencia
+        para fusionar un imaginario clásico con una estética sonora y visual actual, trasladando
+        el álbum a un nuevo contexto cultural.
+      </p>
+
+    </section>
+
+    <!-- BOTONES PROYECTO ANTERIOR / SIGUIENTE -->
+    <div class="project-nav">
+      <a href="trap.html" class="scramble-link prev-project">
+        <i class="bi bi-arrow-left"></i>
+        <span class="scramble-text">Buenos Aires Trap 2024</span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- Columna derecha: Pantera Rosa -->
+  <div class="column right-gallery">
+
+    <!-- GALERÍA -->
+    <div class="project-gallery">
+      <img src="media/panterarosa/pantera9.webp" alt="The Pink Panther vinyl 5">
+      <img src="media/panterarosa/pantera5.webp" alt="The Pink Panther vinyl 1">
+      <img src="media/panterarosa/pantera6.webp" alt="The Pink Panther vinyl 2">
+      <img src="media/panterarosa/Pantera7.webp" alt="The Pink Panther vinyl 3">
+      <img src="media/panterarosa/pantera8.webp" alt="The Pink Panther vinyl 4">
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Cursor personalizado -->
+<div class="cursor">
+  <svg width="60" height="60">
+    <circle cx="30" cy="30" r="10" stroke="black" stroke-width="1" fill="white"></circle>
+  </svg>
+</div>
+
+<!-- Footer flotante -->
+<div class="fixed-bar">
+  <nav class="nav-links">
+    <a href="index.html" class="nav-logo-link">
+      <img class="nav-logo" alt="Martina logo">
+    </a>
+
+    <div class="nav-items">
+      <a href="index.html" class="nav-link"><span>SOBRE MI</span></a>
+      <a href="contact.html" class="nav-link"><span>CONTACTO</span></a>
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <i class="bi bi-moon"></i>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- MODAL VISOR DE IMÁGENES -->
+<div class="image-modal">
+  <span class="close-modal"><i class="bi bi-x-lg"></i></span>
+  <span class="arrow left"><i class="bi bi-chevron-left"></i></span>
+  <img src="" alt="Imagen ampliada">
+  <span class="arrow right"><i class="bi bi-chevron-right"></i></span>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/navbar_inverted.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/gallery_image.js"></script>
+</body>
+</html>

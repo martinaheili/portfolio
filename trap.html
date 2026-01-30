@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buenos Aires Trap 2024</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style_inverted.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container inverted">
+
+  <!-- Columna izquierda -->
+  <div class="column left-text">
+
+    <section class="project-detail" data-project="trap">
+      <h2>
+        <span class="scramble-text">Buenos Aires Trap 2024 — Rebranding</span>
+      </h2>
+      <p class="project-tags">Branding</p>
+
+      <p class="project-desc">
+        Buenos Aires Trap 2024 fue un festival celebrado en diciembre de 2024 en Buenos Aires, Argentina. Reunió a algunos de los nombres más importantes de la escena global del trap. El trap es un género que ha ganado una enorme popularidad en los últimos años y, en Argentina, ha desarrollado una identidad muy marcada a través de artistas como Duki, Neo Pistea y Nicki Nicole, entre otros.
+      </p>
+
+      <p class="project-desc">
+        En mi opinión, el diseño original del festival no reflejaba la cultura del trap, ni a los artistas que participaban, ni al público que asistía. Por eso decidí rediseñar por completo la identidad visual, con el objetivo de representar mejor la esencia del género y de su comunidad.
+      </p>
+    </section>
+
+    <!-- BOTONES PROYECTO ANTERIOR / SIGUIENTE -->
+    <div class="project-nav">
+      <a href="drift.html" class="scramble-link prev-project">
+        <i class="bi bi-arrow-left"></i>
+        <span class="scramble-text">(drift)</span>
+      </a>
+
+      <a href="pink-panther.html" class="scramble-link next-projectt">
+        <span class="scramble-text">The Pink Panther</span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- Columna derecha: galería de imágenes Trap -->
+  <div class="column right-gallery">
+    <div class="project-gallery">
+      <img src="media/trap/trap5.gif" alt="Trap 5">
+      <img src="media/trap/trap6.png" alt="Trap 6">
+      <img class="image-exception" src="media/trap/trap7.png" alt="Trap 7">
+      <img src="media/trap/trap8.png" alt="Trap 8">
+      <img src="media/trap/trap9.png" alt="Trap 9">
+      <img src="media/trap/trap10.png" alt="Trap 10">
+      <img class="image-exception" src="media/trap/trap11.png" alt="Trap 11">                                    
+      <img src="media/trap/trap13.png" alt="Trap 13">      
+      <img src="media/trap/trap14.png" alt="Trap 14">  
+    </div>
+  </div>
+
+</div>
+
+<!-- Cursor personalizado -->
+<div class="cursor">
+  <svg width="60" height="60">
+    <circle cx="30" cy="30" r="10" stroke="black" stroke-width="1" fill="white"></circle>
+  </svg>
+</div>
+
+<!-- Footer flotante -->
+<div class="fixed-bar">
+  <nav class="nav-links">
+    <a href="index.html" class="nav-logo-link">
+      <img class="nav-logo" alt="Martina logo">
+    </a>
+
+    <div class="nav-items">
+      <a href="index.html" class="nav-link"><span>SOBRE MI</span></a>
+      <a href="contact.html" class="nav-link"><span>CONTACTO</span></a>
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <i class="bi bi-moon"></i>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- MODAL VISOR DE IMÁGENES -->
+<div class="image-modal">
+  <span class="close-modal"><i class="bi bi-x-lg"></i></span>
+  <span class="arrow left"><i class="bi bi-chevron-left"></i></span>
+  <img src="" alt="Imagen ampliada">
+  <span class="arrow right"><i class="bi bi-chevron-right"></i></span>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/navbar_inverted.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/gallery_image.js"></script>
+</body>
+</html>

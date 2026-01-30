@@ -1,12 +1,10 @@
 /* ============================= */
 /* LAYOUT INVERTIDO */
 /* ============================= */
-body {
-    overflow: visible;
-    height: 100vh;
-}
+
 .container.inverted {
   display: flex;
+  height: 100vh;
   width: 100%;
 }
 
@@ -17,6 +15,9 @@ body {
   padding: 1rem;
   height: 100vh;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Separador */
@@ -29,31 +30,161 @@ body {
 /* Galería derecha */
 .right-gallery {
   flex: 3;
-  height: 100vh;
-  overflow-x: auto; /* HORIZONTAL REAL */
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding: 2rem;
+  overflow-y: auto;
+  padding: 1rem;
+  max-height: 98vh;
+  position: relative;
 }
 
-.right-gallery .project-gallery {
+.project-gallery {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  height: 100%;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.right-gallery .project-gallery img {
-  height: calc(100vh - 4rem);
-  width: auto;
+.project-gallery img {
+  width: 100%;
+  max-height: 98vh;
+  object-fit: cover;
+  display: block;
+}
+
+.project-gallery img.image-exception {
   object-fit: contain;
-  display: inline-block;
 }
 
-/* Ocultar scrollbars */
+/* Scrollbars ocultos */
 .left-text::-webkit-scrollbar,
 .right-gallery::-webkit-scrollbar {
   display: none;
+}
+
+/* ============================= */
+/* BOTÓN SIGUIENTE PROYECTO */
+/* ============================= */
+
+.next-project {
+  margin-top: auto;          /* CLAVE */
+  padding-bottom: 3.6rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.next-project a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+
+.next-project i {
+  font-size: 0.8rem;
+}
+
+/* CONTENEDOR BOTONES ANTERIOR/SIGUIENTE */
+.project-nav {
+  margin-top: auto; /* empuja los botones al final */
+  padding-bottom: 3.6rem;
+  display: flex;
+  justify-content: space-between; /* anterior a la izquierda, siguiente a la derecha */
+  align-items: center;
+}
+
+/* Botones individuales */
+.project-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.project-nav i {
+  font-size: 0.8rem;
+}
+
+/* ============================= */
+/* MODAL IMÁGENES */
+/* ============================= */
+
+.image-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff05;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 9999;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.image-modal .arrow,
+.image-modal .close-modal {
+  position: absolute;
+  cursor: pointer;
+}
+
+.image-modal .arrow i,
+.image-modal .close-modal i {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.image-modal .arrow.left {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.image-modal .arrow.right {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.image-modal .close-modal {
+  top: 1rem;
+  right: 1rem;
+}
+
+/* ============================= */
+/* TEXTO */
+/* ============================= */
+
+.project-detail {
+  margin-bottom: 3rem;
+}
+
+.project-detail h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.project-tags {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+.project-desc {
+  font-size: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 /* ============================= */
@@ -68,11 +199,9 @@ body {
     width: 55%;
     height: 100vh;
     background-color: var(--bg-main);
-    z-index: 9999999;
-    overflow-y: auto;
+    z-index: 9999;
     padding: 2rem;
     transition: left 0.5s ease;
-    box-shadow: 1px 0 1px rgba(0,0,0,0.1);
   }
 
   .right-gallery {
@@ -83,37 +212,5 @@ body {
 @media (max-width: 480px) {
   .left-text {
     width: 100%;
-    left: -100%;
   }
-}
-
-/* ============================= */
-/* TEXTO */
-/* ============================= */
-
-.left-text .project-detail {
-  margin-bottom: 3rem;
-}
-
-.left-text .project-detail h2 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.left-text .project-tags {
-  color: var(--text-muted);
-  font-size: 0.7rem;
-  margin-bottom: 2rem;
-}
-
-.left-text .project-desc {
-  font-size: 0.8rem;
-  color: var(--text-main);
-  margin-bottom: 1.2rem;
-}
-
-.left-text .scramble-text {
-  display: inline-block;
-  white-space: nowrap;
 }

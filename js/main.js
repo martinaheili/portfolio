@@ -267,6 +267,17 @@ document.querySelectorAll(".project-title .scramble-text").forEach(span => {
 });
 
 // ==========================
+// BOTONES EXPANDIR PROYECTO (FIX)
+// ==========================
+document.querySelectorAll('.project-expand').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation(); // evita que cierre o interfiera el panel
+    const href = btn.getAttribute('href');
+    if (href) window.location.href = href;
+  });
+});
+
+// ==========================
 // VOLVER AL CV
 // ==========================
 function showCV() {
@@ -303,4 +314,3 @@ document.querySelectorAll('.project-audio').forEach(wrapper => {
     icon.classList.add('bi-play-fill');
   });
 });
-
