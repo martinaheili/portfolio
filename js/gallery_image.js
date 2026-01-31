@@ -22,7 +22,7 @@ galleryImages.forEach((img, index) => {
 // Cerrar modal
 closeBtn.addEventListener('click', () => modal.style.display = 'none');
 modal.addEventListener('click', e => {
-  if(e.target === modal) modal.style.display = 'none';
+  if (e.target === modal) modal.style.display = 'none';
 });
 
 // Navegación con flechas del modal
@@ -61,22 +61,48 @@ window.addEventListener('keydown', e => {
 // ANIMACIÓN IMÁGENES GALERÍA
 // ==========================
 const rightCol = document.querySelector('.right-gallery');
+const galleryImgs = gsap.utils.toArray('.right-gallery .project-gallery img');
 
-gsap.utils.toArray('.right-gallery .project-gallery img').forEach(img => {
-  gsap.from(img, {
-    opacity: 0,
-    y: 60,
+const isDesktop = window.innerWidth > 820;
+const scrollerEl = isDesktop ? rightCol : window;
+
+galleryImgs.forEach(img => {
+  gsap.set(img, { opacity: 0, y: 60 });
+
+  gsap.to(img, {
+    opacity: 1,
+    y: 0,
     duration: 0.8,
     ease: "power3.out",
     scrollTrigger: {
       trigger: img,
       start: 'top 85%',
-      end: 'bottom 20%',
-      scroller: rightCol,
-      toggleActions: "play none none none"
+      scroller: isDesktop ? rightCol : undefined,
+      once: true
     }
   });
 });
+
+// 🔑 SOLO EN DESKTOP: forzar últimas imágenes
+if (isDesktop && rightCol) {
+  rightCol.addEventListener('scroll', () => {
+    const scrollBottom =
+      rightCol.scrollTop + rightCol.clientHeight >= rightCol.scrollHeight - 5;
+
+    if (scrollBottom) {
+      galleryImgs.forEach(img => {
+        if (gsap.getProperty(img, "opacity") === 0) {
+          gsap.to(img, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out"
+          });
+        }
+      });
+    }
+  });
+}
 
 // ==========================
 // SCRAMBLE NEXT PROJECT
@@ -116,14 +142,12 @@ gsap.utils.toArray('.right-gallery .project-gallery img').forEach(img => {
   });
 })();
 
-
-
 // ==========================
 // AUDIO MOOD — PLAY / PAUSE
 // ==========================
 (() => {
   const wrapper = document.querySelector('.project-audio');
-  if (!wrapper) return; // si no hay audio, salir
+  if (!wrapper) return;
 
   const btn = wrapper.querySelector('.audio-play');
   const audio = wrapper.querySelector('audio');

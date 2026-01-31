@@ -30,16 +30,42 @@ function getBarBaseHeight() {
 function positionBarInv() {
   if (!barInv || !leftTextCol) return;
 
-  const colRect = leftTextCol.getBoundingClientRect();
+  const w = window.innerWidth;
   const height = getBarBaseHeight();
 
-  gsap.set(barInv, {
-    width: colRect.width - sideMarginInv * 2,
-    left: colRect.left + sideMarginInv,
-    height
-  });
+  // ==========================
+  // DESKTOP → alineado a columna
+  // ==========================
+  if (w > 820) {
+    const colRect = leftTextCol.getBoundingClientRect();
+    gsap.set(barInv, {
+      width: colRect.width - sideMarginInv * 2,
+      left: colRect.left + sideMarginInv,
+      height
+    });
+  } 
+  // ==========================
+  // ENTRE 541px Y 820px → igual navbar normal
+  // ==========================
+  else if (w > 540 && w <= 820) {
+    gsap.set(barInv, {
+      width: "60vw",
+      left: "20%",
+      height
+    });
+  }
+  // ==========================
+  // MÓVILES MUY PEQUEÑOS ≤ 540px
+  // ==========================
+  else {
+    gsap.set(barInv, {
+      width: "90vw",
+      left: "4.2%",
+      height
+    });
+  }
 
-  // CTA e iconos siempre ocultos en estas páginas
+  // CTA e iconos siempre ocultos
   if (iconsInv) {
     gsap.set(iconsInv, {
       opacity: 0,
