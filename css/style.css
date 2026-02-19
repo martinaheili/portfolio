@@ -40,6 +40,17 @@
   content: url("../media/logo.svg");
 }
 
+/* ============================= */
+/* FONT FACE */
+/* ============================= */
+@font-face {
+  font-family: 'TeX Gyre Heros Cn';
+  src: url('../fonts/texgyreheroscn-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -121,6 +132,13 @@ a {
   width: 0.75pt;
   background-color: var(--line-soft);
   margin: 1rem 0;
+}
+
+hr .project-divider {
+  border: none;
+  height: 2px; /* más visible */
+  background-color: var(--line-soft);
+  margin: 2rem 0;
 }
 
 .right {
@@ -208,7 +226,7 @@ a {
 
 .footer-cta {
   position: absolute;
-  bottom: -13%;
+  bottom: -22%;
   opacity: 0;
   pointer-events: none;
 }
@@ -217,7 +235,7 @@ a {
   font-family: 'TeX Gyre Heros Cn', sans-serif;
   font-weight: bold;
   letter-spacing: -0.04em;
-  font-size: 14.5vw;
+  font-size: 18vw;
   color: var(--text-invert);
   text-decoration: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -532,7 +550,7 @@ a {
   .about-block p { font-size: 1.2rem; }
   .about-block p span { font-size: 1rem; }
   .left { flex: 4; }
-  .footer-cta a { font-size: 15.8vw; }
+  .footer-cta a { font-size: 19.3vw; }
   .nav-logo { height: .65vw; }
   .project-medium { flex: 0 1 40%; }
   .project-extralarge { flex: 0 1 80%; }
@@ -577,8 +595,8 @@ a {
 }
 
 @media (max-width: 1024px) {
-  .footer-cta { bottom: -10%; }
-  .footer-cta a { font-size: 14vw; }
+  .footer-cta { bottom: -15%; }
+  .footer-cta a { font-size: 17.4vw; }
   .nav-logo { height: .9rem; }
   .about-block p { font-size: 0.7rem; }
   .about-block h3 { font-size: 0.7rem; }
@@ -620,8 +638,8 @@ a {
   .logo { width: 95vw; }
   .floating-words .words-container { top: 25vh; }
   .floating-words span { font-size: 0.9rem; }
-  .footer-cta a { font-size: 19.5vw; }
-  .footer-cta { bottom: -7%; }
+  .footer-cta a { font-size: 23.7vw; }
+  .footer-cta { bottom: -10%; }
   .social-icons { gap: 4rem; }
   .social-icons a { font-size: 2rem; }
   .fixed-bar { bottom: 2.3%; }
@@ -678,8 +696,8 @@ a {
   .project-small { flex: 0 1 95%; }
   .column.right {width: 100%; }
   .spacer {height: 22rem; }
-  .footer-cta {bottom: -5%;}
-  .footer-cta a {font-size: 18.8vw;}
+  .footer-cta {bottom: -7%;}
+  .footer-cta a {font-size: 22.7vw;}
   .social-icons a {font-size: 1.7rem;}
 }
 
@@ -692,7 +710,7 @@ a {
   .left {flex: 4;}
   .right {flex: 2;}
   .logo {width: 62vw;}
-  .footer-cta a {font-size: 12.5vw;}
-  .footer-cta {bottom: -5%;}
+  .footer-cta a {font-size: 15.3vw;}
+  .footer-cta {bottom: -8%;}
   .spacer {height: 30rem;}
 }
