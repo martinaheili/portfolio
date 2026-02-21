@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dosis — Retrato editorial</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style_inverted.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container inverted">
+
+  <!-- Logo solo para móviles -->
+  <a href="index.html">
+    <img class="project-mobile-logo" src="media/logo.svg" alt="Logo Martina">
+  </a>
+
+  <!-- Columna izquierda -->
+  <div class="column left-text">
+
+    <section class="project-detail" data-project="dosis">
+      <h2>
+        <span class="scramble-text">dosis — un retrato editorial de la mente</span>
+      </h2>
+
+      <p class="project-tags">Editorial — Packaging</p>
+
+      <p class="project-desc">
+        La salud mental necesita ser hablada, comprendida y sentida. dosis nace como una serie editorial limitada que utiliza el diseño y la narrativa visual para traducir aquello que, muchas veces, las palabras no alcanzan a explicar.
+      </p>
+
+      <p class="project-desc">
+        No se plantea como un manual clínico, sino como un ejercicio de empatía. Cada entrega transforma un trastorno en una experiencia tangible, invitando al lector a implicarse activamente en el recorrido. Cada mes, una pieza, una historia y una perspectiva distinta, siempre desde el respeto, evitando romantizar o caricaturizar la complejidad de la mente humana.
+      </p>
+
+      <p class="project-desc">
+        La primera edición aborda tres trastornos mediante recursos editoriales específicos.
+      </p>
+
+      <p class="project-desc">
+        <br>
+        <strong>Síndrome de Diógenes / "Por las dudas"</strong><br><br>
+        Esta pieza obliga a recorrer el trastorno de forma progresiva. Desde una aparente normalidad inicial, el lector avanza hacia el desorden, la acumulación y el encierro. El caos crece página a página de forma lenta pero inevitable, generando una sensación de agobio espacial.<br><br>
+        Formato: 260 × 210 mm horizontal, encuadernación japonesa.
+      </p>
+
+      <p class="project-desc">
+        <br>
+        <strong>TOC / Trastorno obsesivo compulsivo</strong><br><br>
+        La pieza no se limita a explicar el TOC: propone experimentarlo. A través de instrucciones, repeticiones y pequeños rituales, el lector deja de ser observador para convertirse en parte activa del trastorno.<br><br>
+        Formato: carpeta A4 con hojas sueltas.
+      </p>
+
+      <p class="project-desc">
+        <br>
+        <strong>Trastorno de bipolaridad / "un mismo lugar"</strong><br><br>
+        La publicación se divide en tres secciones que representan distintos estados del trastorno. Las páginas, cortadas horizontalmente, permiten combinaciones libres, de modo que el lector puede superponer y recorrer los estados a su ritmo, construyendo una experiencia no lineal.<br><br>
+        Formato: 100 × 210 mm, encuadernación en espiral.
+      </p>
+
+    </section>
+
+    <!-- BOTONES PROYECTO ANTERIOR / SIGUIENTE -->
+    <div class="project-nav">
+        <a href="permanent-smile.html" class="scramble-link prev-project">
+            <i class="bi bi-arrow-left"></i>
+            <span class="scramble-text">Permanent Smile</span>
+        </a>
+
+      <a href="drift.html" class="scramble-link">
+        <span class="scramble-text">(drift)</span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="separator"></div>
+
+  <!-- Columna derecha: galería -->
+  <div class="column right-gallery">
+    <div class="project-gallery">
+      <img src="media/dosis/3piezas.gif" alt="3 piezas dosis">
+      <img src="media/dosis/Diogenes.gif" alt="Diogenes">
+      <img src="media/dosis/diogenes_desplegado.jpg" alt="Diogenes desplegado">
+      <img src="media/dosis/Toc2.gif" alt="Toc 2">
+      <img src="media/dosis/Toc.gif" alt="Toc 1">
+      <img src="media/dosis/bipolaridad.gif" alt="Bipolaridad">
+      <img src="media/dosis/bipolaridad_desplegado.jpg" alt="Bipolaridad desplegado">
+      <img src="media/dosis/empaque.gif" alt="Empaque dosis">
+    </div>
+  </div>
+
+</div>
+
+<!-- Cursor personalizado -->
+<div class="cursor">
+  <svg width="60" height="60">
+    <circle cx="30" cy="30" r="10" stroke="black" stroke-width="1" fill="white"></circle>
+  </svg>
+</div>
+
+<!-- Footer flotante -->
+<div class="fixed-bar">
+  <nav class="nav-links">
+    <a href="index.html" class="nav-logo-link">
+      <img class="nav-logo" alt="Martina logo">
+    </a>
+
+    <div class="nav-items">
+      <a href="index.html" class="nav-link"><span>SOBRE MI</span></a>
+      <a href="contact.html" class="nav-link"><span>CONTACTO</span></a>
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <i class="bi bi-moon"></i>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- Modal imágenes -->
+<div class="image-modal">
+  <span class="close-modal"><i class="bi bi-x-lg"></i></span>
+  <span class="arrow left"><i class="bi bi-chevron-left"></i></span>
+  <img src="" alt="Imagen ampliada">
+  <span class="arrow right"><i class="bi bi-chevron-right"></i></span>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/navbar_inverted.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/gallery_image.js"></script>
+
+</body>
+</html>

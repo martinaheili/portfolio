@@ -134,12 +134,6 @@ a {
   margin: 1rem 0;
 }
 
-hr .project-divider {
-  border: none;
-  height: 2px; /* más visible */
-  background-color: var(--line-soft);
-  margin: 2rem 0;
-}
 
 .right {
   flex: 1; /* 1/4 */
@@ -442,6 +436,12 @@ hr .project-divider {
   color: var(--text-main);
 }
 
+.project-detail .project-desc strong{
+  text-decoration: underline;
+  color: var(--text-muted);
+}
+
+
 .project-tags {
   color: var(--text-muted);
   font-size: 0.8rem;
@@ -532,6 +532,206 @@ hr .project-divider {
   color: var(--text-muted);
   margin-left: 2px;
 }
+
+
+
+/* ---------------------------- página de contacto---------------------------- */
+
+.contact-page {
+  cursor: none;
+}
+
+/* contact-page cursor */
+.contact-page .cursor {
+  display: block !important; /* antes estaba none */
+}
+
+.contact-page canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* CONTACTO IZQUIERDA */
+.contact-left-texts {
+  display: flex;
+  flex-direction: column;
+  height: 300vh;
+}
+
+.contact-greeting {
+  font-family: 'TeX Gyre Heros Cn', sans-serif;
+  font-size: 30vw; /* ocupa aprox. 3/4 de la columna */
+  line-height: 0.9;
+  letter-spacing: -5%;
+  margin-bottom: 2rem;
+  margin-top: -60px;
+  color: var(--text-main);
+}
+
+.contact-subtext {
+  font-family: 'TeX Gyre Heros Cn', sans-serif;
+  font-size: 3.5rem; /* ocupa aprox. 50% de la columna */
+  line-height: 1;
+  letter-spacing: -3%;
+  color: var(--text-main);
+  width: 65%;
+}
+
+.scroll-line {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  width: 15%;
+  position: absolute;
+}
+
+.scroll-line:first-child {
+  right: 10%;
+  margin-top: 10rem;
+}
+
+.scroll-line:nth-child(2) {
+  left: 15%;
+  margin-top: 20rem;
+}
+
+.scroll-line:nth-child(3) {
+  left: 50%;
+  margin-top: 40rem;
+}
+
+.scroll-line:nth-child(4) {
+  left: 5%;
+  margin-top: 60rem;
+}
+
+.scroll-line:nth-child(5) {
+  right: 20%;
+  margin-top: 90rem;
+}
+
+.profile-photo {
+  position: fixed;
+  bottom: 0;
+  right: 27%;
+  width: 200px;
+}
+
+
+
+/* FORMULARIO DERECHA */
+.contact-block {
+  margin-bottom: 1.2rem;
+  font-size: 0.8rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: 1px solid var(--line-soft);
+  padding: 0.6rem 0.8rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-main);
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-soft);
+}
+
+.btn-submit {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--line-soft);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-main);
+}
+
+.btn-submit:hover {
+  background: var(--text-main);
+  color: var(--bg-main);
+}
+
+.form-image {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 55px;
+    pointer-events: auto; /* ahora podemos hacer hover */
+    cursor: pointer;
+}
+
+.form-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Tooltip oculto por defecto */
+.form-image .tooltip {
+    position: absolute;
+    bottom: 120%; /* encima de la imagen */
+    right: 50%;
+    transform: translateX(50%);
+    background-color: var(--text-main);
+    color: var(--bg-main);
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Flecha del tooltip */
+.form-image .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* debajo del tooltip */
+    left: 90%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: var(--text-main) transparent transparent transparent;
+}
+
+/* Mostrar tooltip al hacer hover */
+.form-image:hover .tooltip {
+    opacity: 1;
+    transform: translateX(10%) translateY(-5px);
+}
+
 
 
 /* ---------------------------- MEDIA QUERIES ---------------------------- */

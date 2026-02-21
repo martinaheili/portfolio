@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mrtna.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="contact-page">
+
+
+  <div id="top"></div>
+
+  <div class="container">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="column left">
+
+        
+        <header class="navbar">
+            <div class="logo-placeholder"></div>
+        </header>
+        
+        <!-- 👇 AQUÍ IRÁ TU CONTENIDO DE CONTACTO (LEFT) -->
+        <div class="contact-left-texts">
+            <h1 class="contact-greeting">hola,</h1>
+            <p class="contact-subtext">
+                creo que ya va siendo hora <br>de que me contactes.
+            </p>
+
+            <div class="contact-scroll-texts">
+                <p class="scroll-line">Prometo contestar rápido.</p>
+                <p class="scroll-line">Esto es una señal (bastante clara).</p>
+                <p class="scroll-line">Tic tac. Tú verás.</p>
+                <p class="scroll-line">Estoy literalmente a un click.</p>
+                <p class="scroll-line">Has hecho todo el scroll… ahora solo falta el mensaje.</p>
+            </div>
+
+            <img src="media/me.png" class="profile-photo">
+        </div>
+        
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="column right">
+        <p class="contact-block">
+            Te dejo este formulario muy limpio e intuitivo para que me mandes un mensajito y empecemos a crear juntos.
+        </p>
+        <hr>
+        <form class="contact-form">
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Tu email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="company">Desde dónde me contactas</label>
+            <input type="text" id="company" name="company" placeholder="Agencia / Estudio / Empresa / Otro">
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Asunto</label>
+            <input type="text" id="subject" name="subject" placeholder="Asunto" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Escribe tu mensaje..." rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar</button>
+        </form>
+
+        <div class="form-image">
+            <img src="media/lilo.png" alt="Lilo" />
+            <span class="tooltip">aquí, esperando tu mensaje...</span>
+        </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- NAVBAR INFERIOR -->
+  <div class="fixed-bar">
+    <nav class="nav-links">
+      
+        <a href="index.html" class="nav-logo-link">
+        <img class="nav-logo" alt="Martina logo">
+        </a>
+
+      <div class="nav-items">
+        <a href="index.html" class="nav-link"><span>SOBRE MI</span></a>
+        <a href="contact.html" class="nav-link"><span>CONTACTO</span></a>
+        <button class="theme-toggle" aria-label="Cambiar tema">
+          <i class="bi bi-moon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/by_mrtna/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+
+      <a href="https://www.linkedin.com/in/martinaheili" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+
+      <a href="mailto:martinaheiliz@gmail.com" aria-label="Email">
+        <i class="bi bi-envelope"></i>
+      </a>
+    </div>
+
+    <div class="footer-cta">
+      <a href="contact.html">contáctame</a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/clock-cursor.js"></script>
+
+</body>
+</html>
