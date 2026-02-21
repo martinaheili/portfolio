@@ -139,11 +139,13 @@ window.addEventListener("resize", () => {
 
 // Scroll to top desde el logo
 logoLink.addEventListener("click", (e) => {
-  e.preventDefault();
-  leftCol.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+    e.preventDefault(); // evita recargar
+    leftCol.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // ir a home si no estás en index
+    window.location.href = 'index.html';
+  }
 });
 
 // Set inicial al cargar la página

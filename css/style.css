@@ -546,18 +546,11 @@ a {
   display: block !important; /* antes estaba none */
 }
 
-.contact-page canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
 /* CONTACTO IZQUIERDA */
 .contact-left-texts {
   display: flex;
   flex-direction: column;
-  height: 300vh;
+  height: auto;
 }
 
 .contact-greeting {
@@ -589,30 +582,11 @@ a {
   position: absolute;
 }
 
-.scroll-line:first-child {
-  right: 10%;
-  margin-top: 10rem;
-}
-
-.scroll-line:nth-child(2) {
-  left: 15%;
-  margin-top: 20rem;
-}
-
-.scroll-line:nth-child(3) {
-  left: 50%;
-  margin-top: 40rem;
-}
-
-.scroll-line:nth-child(4) {
-  left: 5%;
-  margin-top: 60rem;
-}
-
-.scroll-line:nth-child(5) {
-  right: 20%;
-  margin-top: 90rem;
-}
+.scroll-line:first-child { top: 40rem; right: 10%; }
+.scroll-line:nth-child(2) { top: 60rem; left: 15%; }
+.scroll-line:nth-child(3) { top: 90rem; left: 50%; }
+.scroll-line:nth-child(4) { top: 120rem; left: 5%; }
+.scroll-line:nth-child(5) { top: 140rem; right: 20%; padding-bottom: 40rem;}
 
 .profile-photo {
   position: fixed;

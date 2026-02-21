@@ -314,3 +314,8 @@ document.querySelectorAll('.project-audio').forEach(wrapper => {
     icon.classList.add('bi-play-fill');
   });
 });
+
+
+
+
+
