@@ -582,18 +582,53 @@ a {
   position: absolute;
 }
 
-.scroll-line:first-child { top: 40rem; right: 10%; }
+.scroll-line:first-child { top: 40rem; right: 20%; }
 .scroll-line:nth-child(2) { top: 60rem; left: 15%; }
 .scroll-line:nth-child(3) { top: 90rem; left: 50%; }
 .scroll-line:nth-child(4) { top: 120rem; left: 5%; }
 .scroll-line:nth-child(5) { top: 140rem; right: 20%; padding-bottom: 40rem;}
 
-.profile-photo {
-  position: fixed;
-  bottom: 0;
-  right: 27%;
+
+.editable-wrapper {
+  position: relative;
+  display: block;        /* antes inline-block */
+
   width: 200px;
+  margin-left: auto;     /* empuja hacia la derecha */
+
+  border: 1.5px solid var(--line-soft);
 }
+
+/* imagen ocupa el wrapper */
+
+.editable-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* handles estilo figma siempre visibles */
+
+.handle {
+  width: 10px;
+  height: 10px;
+
+  background: var(--bg-main);
+  border: 1.5px solid var(--line-soft);
+  border-radius: 2px;
+
+  position: absolute;
+  z-index: 10;
+
+  opacity: 1; /* siempre visibles */
+}
+
+/* posiciones */
+
+.handle.tl { top: -6px; left: -6px; cursor: nwse-resize; }
+.handle.tr { top: -6px; right: -6px; cursor: nesw-resize; }
+.handle.bl { bottom: -6px; left: -6px; cursor: nesw-resize; }
+.handle.br { bottom: -6px; right: -6px; cursor: nwse-resize; }
 
 
 
