@@ -123,3 +123,39 @@ interact('.editable-wrapper').draggable({
   }
 
 })
+
+
+
+
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+  const action = form.action;
+
+  try {
+    const response = await fetch(action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      // Reemplaza el formulario por mensaje de éxito
+      const rightCol = document.querySelector('.column.right');
+      rightCol.innerHTML = `
+        <div class="contact-success">
+          <img src="media/sticker.png" class="success-sticker" alt="Éxito">
+          <p class="success-text">¡Muchas gracias por tu mensaje!</p>
+          <p class="success-subtext">Ya estamos en contacto ;)</p>
+        </div>
+      `;
+    } else {
+      alert('Ocurrió un error, intenta nuevamente.');
+    }
+  } catch (error) {
+    alert('Ocurrió un error de red, intenta nuevamente.');
+  }
+});

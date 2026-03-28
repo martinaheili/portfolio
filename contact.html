@@ -29,15 +29,7 @@
             <p class="contact-subtext">
                 creo que ya va siendo hora <br>de que me contactes.
             </p>
-
-            <div class="contact-scroll-texts">
-                <p class="scroll-line">Prometo contestar rápido.</p>
-                <p class="scroll-line">Esto es una señal</p>
-                <p class="scroll-line">Tic tac. Tú verás.</p>
-                <p class="scroll-line">Estoy literalmente a un click.</p>
-                <p class="scroll-line">Has hecho todo el scroll… ahora solo falta el mensaje.</p>
-            </div>
-
+            
             <div class="editable-wrapper">
               <img src="media/me.png" class="editable-photo">
 
@@ -46,6 +38,15 @@
               <span class="handle bl"></span>
               <span class="handle br"></span>
             </div>
+            
+            <div class="contact-scroll-texts">
+                <p class="scroll-line">Prometo contestar rápido.</p>
+                <p class="scroll-line">Esto es una señal</p>
+                <p class="scroll-line">Tic tac. Tú verás.</p>
+                <p class="scroll-line">Estoy literalmente a un click.</p>
+                <p class="scroll-line">Has hecho todo el scroll… <br>ahora solo falta el mensaje.</p>
+            </div>
+
 
         </div>
         
@@ -55,43 +56,50 @@
 
     <!-- COLUMNA DERECHA -->
     <div class="column right">
-        <p class="contact-block">
-            Te dejo este formulario muy limpio e intuitivo para que me mandes un mensajito y empecemos a crear juntos.
-        </p>
-        <hr>
-        <form class="contact-form">
-        <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-        </div>
+      <div class="contact-flex">
+        <div class="formulario">
+          <p class="contact-block">
+              Te dejo este formulario muy limpio e intuitivo para que me mandes un mensajito y empecemos a crear juntos.
+          </p>
+          <hr>
+          <form id="contactForm" class="contact-form" 
+                action="https://formspree.io/f/xzdkepka" 
+                method="POST">
+            
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Tu email" required>
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Tu email" required>
+            </div>
 
-        <div class="form-group">
-            <label for="company">Desde dónde me contactas</label>
-            <input type="text" id="company" name="company" placeholder="Agencia / Estudio / Empresa / Otro">
-        </div>
+            <div class="form-group">
+                <label for="company">Desde dónde me contactas</label>
+                <input type="text" id="company" name="company" placeholder="Agencia / Estudio / Empresa / Otro">
+            </div>
 
-        <div class="form-group">
-            <label for="subject">Asunto</label>
-            <input type="text" id="subject" name="subject" placeholder="Asunto" required>
-        </div>
+            <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" name="subject" placeholder="Asunto" required>
+            </div>
 
-        <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Escribe tu mensaje..." rows="6" required></textarea>
-        </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" placeholder="Escribe tu mensaje..." rows="6" required></textarea>
+            </div>
 
-        <button type="submit" class="btn-submit">Enviar</button>
-        </form>
+            <button type="submit" class="btn-submit">Enviar</button>
+          </form>
+        </div>
 
         <div class="form-image">
             <img src="media/lilo.png" alt="Lilo" />
             <span class="tooltip">aquí, esperando tu mensaje...</span>
         </div>
+      </div>
     </div>
 
 
