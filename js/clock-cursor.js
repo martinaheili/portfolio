@@ -2,6 +2,7 @@ if (!document.body.classList.contains("contact-page")) {
   throw new Error("Clock cursor loaded outside contact page");
 }
 
+
 let clock;
 let targetPos = { x: 0, y: 0 };
 let currentPos = { x: 0, y: 0 };

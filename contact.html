@@ -15,6 +15,11 @@
 
   <div class="container">
 
+    <!-- Logo solo para móviles -->
+    <a href="index.html">
+      <img class="project-mobile-logo" src="media/logo.svg" alt="Logo Martina">
+    </a>
+
     <!-- COLUMNA IZQUIERDA -->
     <div class="column left">
 
@@ -26,9 +31,14 @@
         <!-- 👇 AQUÍ IRÁ TU CONTENIDO DE CONTACTO (LEFT) -->
         <div class="contact-left-texts">
             <h1 class="contact-greeting">hola,</h1>
+            
             <p class="contact-subtext">
-                creo que ya va siendo hora <br>de que me contactes.
+              creo que ya va siendo hora <br>de que me contactes.
             </p>
+            
+            <div class="static-clock-container">
+                <canvas id="staticClockCanvas" class="static-clock-canvas"></canvas>
+            </div>
             
             <div class="editable-wrapper">
               <img src="media/me.png" class="editable-photo">
@@ -245,6 +255,7 @@
 <script src="js/clock-cursor.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/logo-hover.js"></script>
+<script src="js/static-clock.js"></script>
 
 </body>
 </html>
