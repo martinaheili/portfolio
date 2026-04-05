@@ -10,6 +10,7 @@
   /* Invert */
   --bg-invert: #242424;
   --text-invert: #FFFFF4;
+  --logo-fill: #242424;  /* color oscuro para el logo en modo claro */
 
   /* UI */
   --nav-bg: #242424;
@@ -29,6 +30,8 @@
   --text-invert: #242424;
 
   --nav-bg: #FFFFF4;
+
+  --logo-fill: #FFFFF4;  /* color claro para el logo en modo oscuro */
 }
 
 /* Logos – dark */
@@ -557,18 +560,18 @@ a {
 
 .contact-greeting {
   font-family: 'TeX Gyre Heros Cn', sans-serif;
-  font-size: 30vw; /* ocupa aprox. 3/4 de la columna */
-  line-height: 0.9;
+  font-size: 18vw;
+  line-height: 0.8;
   letter-spacing: -5%;
   margin-bottom: 2rem;
-  margin-top: -60px;
+  margin-top: -20px;
   color: var(--text-main);
-  margin-left: -1.5rem;
+  margin-left: -.5rem;
 }
 
 .contact-subtext {
   font-family: 'TeX Gyre Heros Cn', sans-serif;
-  font-size: 3.5rem; /* ocupa aprox. 50% de la columna */
+  font-size: 2.6vw; /* ocupa aprox. 50% de la columna */
   line-height: 1;
   letter-spacing: -3%;
   color: var(--text-main);
@@ -579,7 +582,6 @@ a {
   display: grid;
   grid-template-rows: repeat(5, minmax(30vh, auto));
   gap: 1rem;
-  padding-bottom: 10rem;
 }
 
 .scroll-line {
@@ -605,7 +607,7 @@ a {
   position: relative;
   display: block;        /* antes inline-block */
 
-  width: 200px;
+  width: 16vw;
   margin-left: auto;     /* empuja hacia la derecha */
 
   border: 1.5px solid var(--line-soft);
@@ -617,6 +619,31 @@ a {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* Animación flotante para la foto */
+.editable-wrapper .editable-photo {
+  animation: float 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Pequeña variación en la duración para que sea más orgánica */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Pausar animación durante el arrastre o redimensionamiento */
+.editable-wrapper.dragging .editable-photo,
+.editable-wrapper.resizing .editable-photo {
+  animation: none;
 }
 
 /* handles estilo figma siempre visibles */
@@ -641,6 +668,43 @@ a {
 .handle.tr { top: -6px; right: -6px; cursor: nesw-resize; }
 .handle.bl { bottom: -6px; left: -6px; cursor: nesw-resize; }
 .handle.br { bottom: -6px; right: -6px; cursor: nwse-resize; }
+
+
+.mobile-form-wrapper {
+  display: none;
+}
+
+/* special logo */
+
+/* Logo interactivo mrtna. */
+.logo-interactive-wrapper {
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mrtna-logo-container svg {
+  width: 71vw;
+  height: auto;
+  display: block;
+}
+
+/* Cada letra se comporta como área clickeable */
+#mrtna-logo-container svg > g {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo-hint {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary, #777);
+  opacity: 0.7;
+  margin: 0;
+  text-align: center;
+}
 
 
 
@@ -806,6 +870,8 @@ a {
   .about-block h3 { font-size: 1.2rem; }
   .about-block p { font-size: 1.2rem; }
   .about-block p span { font-size: 1rem; }
+  .fake-input input { font-size: 1.2rem; padding: 10px 14px; }
+  .fake-confirm { font-size: 1rem; padding: 10px 18px; }
   .left { flex: 4; }
   .footer-cta a { font-size: 19.3vw; }
   .nav-logo { height: .65vw; }
@@ -816,6 +882,15 @@ a {
   .project-tags { font-size: 1.2rem; }
   .project-detail p:not(.project-tags) { font-size: 1.2rem; }
   .project-expand { font-size: 2rem; }
+  .contact-block { font-size: 1.2rem;}
+  .contact-form input, .contact-form textarea { font-size: 1.2rem; }
+  .contact-form label { font-size: 1.2rem; }
+  .btn-submit { font-size: 1rem; padding: 14px 20px; }
+  .form-image { width: 80px; margin-right: 1.5rem; }
+  .form-image .tooltip { font-size: 1.2rem; padding: 8px 12px; }
+  #mrtna-logo-container svg { width: 77vw; }
+  .logo-interactive-wrapper { margin-bottom: 6rem; }
+  .scroll-line { font-size: 1.5rem; }
 }
 
 @media (min-width: 1921px) and (max-width: 2560px) {
@@ -832,6 +907,14 @@ a {
   .project-tags { font-size: 1rem; }
   .project-detail p:not(.project-tags) { font-size: 1rem; }
   .project-expand { font-size: 1.5rem; }
+  .contact-block { font-size: 1rem;}
+  .contact-form { gap: 1.5rem; }
+  .contact-form label { font-size: 1rem; }
+  .contact-form input, .contact-form textarea { font-size: 1rem; }
+  .btn-submit { font-size: 1rem; padding: 12px 18px; }
+  .scroll-line { font-size: 1rem; }
+  .form-image { width: 80px; margin-right: 1.5rem; }
+  .form-image .tooltip { font-size: 1rem; padding: 8px 12px; }
 }
 
 @media (max-width: 1600px) {
@@ -840,6 +923,13 @@ a {
 
 @media (max-width: 1440px) {
   .nav-logo { height: 1vw; }
+  .floating-words span { font-size: 0.7rem; }
+  .fake-input input { font-size: 0.7rem; }
+  .about-block h3 { font-size: 0.7rem; }
+  .form-image { width: 45px; }
+  .contact-form input, .contact-form textarea { font-size: 0.7rem; }
+  .contact-form label { font-size: 0.7rem; }
+  .scroll-line { font-size: 0.7rem; }
 }
 
 @media (max-width: 1280px) {
@@ -849,6 +939,8 @@ a {
   .project-audio .audio-play { font-size: 0.8rem; padding: 4px 8px;}
   .project-expand { font-size: 1rem; }
   h2 { font-size: .7rem; }
+  .contact-form input, .contact-form textarea { padding: 7px 9px; }
+  .btn-submit { padding: 7px 14px; font-size: 0.7rem; }
 }
 
 @media (max-width: 1024px) {
@@ -864,6 +956,8 @@ a {
   .project-detail p:not(.project-tags) { font-size: 0.7rem; }
   .project-tags { font-size: 0.6rem; }
   .scramble-text { font-size: 0.7rem; }
+  .contact-block { font-size: 0.7rem;}
+  .contact-greeting { margin-bottom: 1rem; }
 }
 
 @media (max-width: 820px) {
@@ -911,7 +1005,43 @@ a {
   .fake-confirm { font-size: 0.9rem; padding: 10px 14px; }
   .about-block p span { font-size: 0.8rem; }
   h2 { font-size: 0.9rem; }
+
+  
+  body.contact-page .mobile-form-wrapper { display: block; margin: 0 5rem;}
+  .formulario-mobile hr {border: none; height: 1px; background: var(--line-soft); margin: 20px 0;}
+  .form-image-mobile { width: 45px; margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem ;}
+  .form-image-mobile img { width: 100%; height: auto; display: block; transform: scaleX(-1);}
+  .form-image-mobile .tooltip {
+      background-color: var(--text-main);
+      color: var(--bg-main);
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  /* Flecha del tooltip */
+  .form-image-mobile .tooltip::after {
+      border-width: 4px;
+      border-style: solid;
+      border-color: var(--text-main) transparent transparent transparent;
+  }
+  /* Mostrar tooltip al hacer hover */
+  .form-image-mobile:hover .tooltip {
+      opacity: 1;
+  }
+
+  .contact-block { font-size: 0.9rem;}
+  .contact-form label { font-size: 0.9rem; }
+  .contact-form input, .contact-form textarea { font-size: 0.9rem; padding: 10px 9px; }
+  .btn-submit { font-size: 0.9rem; padding: 10px 14px; }
+  #mrtna-logo-container svg { width: 95vw; }
+  .logo-interactive-wrapper { margin-bottom: 6rem; }
+  .contact-scroll-texts {display: none;}
 }
+
 
 @media (max-width: 540px) {
   .fixed-bar .nav-links a {font-size: 0.8rem;}

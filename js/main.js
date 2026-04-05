@@ -191,7 +191,7 @@ closePanelBtn.addEventListener("click", () => {
 rightPanel.addEventListener("click", e => e.stopPropagation());
 
 // ==========================
-// PROJECT DETAIL (FIX DRIFT)
+// PROJECT DETAIL 
 // ==========================
 function animateProjectGallery() {
   gsap.utils.toArray('.project-detail:not([hidden]) img').forEach(img => {

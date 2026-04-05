@@ -17,7 +17,7 @@ const HOVER_SCALE = 1.5;
 class Clock {
   constructor(settings) {
     Object.assign(this, {
-      radius: 40,
+      radius: this.getResponsiveRadius(),
       globalPosition: { x: 0, y: 0 },
       ...settings
     });
@@ -38,6 +38,21 @@ class Clock {
 
     this.NUMBER_LERP = 0.38;
     this.HAND_LERP = 0.18;
+  }
+
+  /* ---------- RESPONSIVE SIZE ---------- */
+  getResponsiveRadius() {
+    const w = window.innerWidth;
+
+    if (w >= 2561 && w <= 3840) {
+      return 65; // 4K
+    }
+
+    if (w >= 1921 && w <= 2560) {
+      return 55; // 2K / ultrawide
+    }
+
+    return 40; // estándar
   }
 
   update(position, scale) {
@@ -76,21 +91,25 @@ class Clock {
     pop();
   }
 
-  /* ---------- COLOR FIJO NEGRO/BLANCO SEGÚN MODO ---------- */
-getStrokeColor() {
-  const theme = document.documentElement.getAttribute("data-theme");
-  return theme === "dark" ? color(255,255,255) : color(0,0,0);
-}
+  /* ---------- COLOR SEGÚN TEMA ---------- */
+  getStrokeColor() {
+    const theme = document.documentElement.getAttribute("data-theme");
+
+    return theme === "dark"
+      ? color(255, 255, 255)
+      : color(0, 0, 0);
+  }
 
   drawClock() {
     const strokeColor = this.getStrokeColor();
-    const handDotColor = color(255, 117, 24); // rojo para manecillas y puntito central
+    const handDotColor = color(255, 117, 24);
 
     this.drawNumbersRing(strokeColor);
     this.drawClockHands(handDotColor);
 
     const { x, y } = this.globalPosition;
-    fill(handDotColor); // puntito central rojo
+
+    fill(handDotColor);
     noStroke();
     ellipse(x, y, 8);
   }
@@ -98,6 +117,7 @@ getStrokeColor() {
   drawClockHand(length, weight, x, y, angle, handColor) {
     stroke(handColor);
     strokeWeight(weight);
+
     line(
       x,
       y,
@@ -107,32 +127,42 @@ getStrokeColor() {
   }
 
   drawNumbersRing(strokeColor) {
-    const offsetNumbers = HALF_PI - ((TWO_PI / 360) * (360 / 12));
+    const offsetNumbers =
+      HALF_PI - ((TWO_PI / 360) * (360 / 12));
 
     fill(strokeColor);
     noStroke();
     textAlign(CENTER, CENTER);
-    textSize(10);
+
+    textSize(this.radius * 0.25);
 
     for (let i = 0; i < this.numItems; i++) {
       const base = this.numberStates[i];
+
       text(
         (i % 12) + 1,
-        base.x + Math.cos(this.slice * i - offsetNumbers) * this.radius,
-        base.y + Math.sin(this.slice * i - offsetNumbers) * this.radius
+        base.x +
+          Math.cos(this.slice * i - offsetNumbers) *
+            this.radius,
+        base.y +
+          Math.sin(this.slice * i - offsetNumbers) *
+            this.radius
       );
     }
   }
 
   drawClockHands(handColor) {
     const hourAngle =
-      map(hour() % 12 + minute() / 60, 0, 12, 0, TWO_PI) - HALF_PI;
+      map(hour() % 12 + minute() / 60, 0, 12, 0, TWO_PI) -
+      HALF_PI;
 
     const minuteAngle =
-      map(minute() + second() / 60, 0, 60, 0, TWO_PI) - HALF_PI;
+      map(minute() + second() / 60, 0, 60, 0, TWO_PI) -
+      HALF_PI;
 
     const secondAngle =
-      map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
+      map(second(), 0, 60, 0, TWO_PI) -
+      HALF_PI;
 
     this.drawClockHand(
       this.radius * 0.5,
@@ -165,13 +195,24 @@ getStrokeColor() {
 
 /* ---------- p5 SETUP ---------- */
 function setup() {
-  const canvas = createCanvas(window.innerWidth, window.innerHeight);
+  const canvas = createCanvas(
+    window.innerWidth,
+    window.innerHeight
+  );
+
   canvas.style("pointer-events", "none");
   canvas.position(0, 0);
   canvas.style("z-index", "9999");
 
-  targetPos = { x: width / 2, y: height / 2 };
-  currentPos = { x: width / 2, y: height / 2 };
+  targetPos = {
+    x: width / 2,
+    y: height / 2
+  };
+
+  currentPos = {
+    x: width / 2,
+    y: height / 2
+  };
 
   clock = new Clock({
     globalPosition: currentPos
@@ -184,10 +225,23 @@ function setup() {
 function draw() {
   clear();
 
-  currentPos.x = lerp(currentPos.x, targetPos.x, FOLLOW_SPEED);
-  currentPos.y = lerp(currentPos.y, targetPos.y, FOLLOW_SPEED);
+  currentPos.x = lerp(
+    currentPos.x,
+    targetPos.x,
+    FOLLOW_SPEED
+  );
 
-  currentScale = lerp(currentScale, targetScale, SCALE_SPEED);
+  currentPos.y = lerp(
+    currentPos.y,
+    targetPos.y,
+    FOLLOW_SPEED
+  );
+
+  currentScale = lerp(
+    currentScale,
+    targetScale,
+    SCALE_SPEED
+  );
 
   clock.update(currentPos, currentScale);
   clock.draw();
@@ -218,5 +272,10 @@ function initHoverDetection() {
 
 /* ---------- RESIZE ---------- */
 function windowResized() {
-  resizeCanvas(window.innerWidth, window.innerHeight);
+  resizeCanvas(
+    window.innerWidth,
+    window.innerHeight
+  );
+
+  clock.radius = clock.getResponsiveRadius();
 }
