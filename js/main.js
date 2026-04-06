@@ -3,8 +3,33 @@
 // ==========================
 gsap.registerPlugin(ScrollTrigger);
 
+
 // ==========================
-// LOGO ANIMADO
+// ANIMACIÓN DE ENTRADA DEL LOGO (fade-in desde abajo)
+// ==========================
+function animateLogo() {
+  const logo = document.querySelector('.logo');
+  if (!logo) return;
+
+  // Aseguramos que empiece desde abajo e invisible
+  gsap.set(logo, { 
+    opacity: 0, 
+    y: 30      // desplazado 30px hacia abajo
+  });
+  
+  // Animación de entrada: sube y aparece
+  gsap.to(logo, {
+    opacity: 1,
+    y: 0,       // vuelve a su posición original
+    duration: 0.7,
+    ease: 'power2.out',
+    delay: 0.2
+  });
+}
+
+
+// ==========================
+// LOGO ANIMADO (ScrollTrigger)
 // ==========================
 const leftCol = document.querySelector('.column.left');
 const logo = document.querySelector('.logo');
@@ -84,79 +109,131 @@ document.querySelectorAll(".nav-link span").forEach(span => {
 });
 
 // ==========================
-// FLOATING WORDS CON REPULSIÓN
+// FLOATING WORDS CON REPULSIÓN + FADE SECUENCIAL
 // ==========================
 const floatingWords = document.querySelectorAll(".floating-words span");
 const container = document.querySelector(".floating-words .words-container");
 const placed = [];
 const padding = 5;
 
-floatingWords.forEach(word => {
-  let x, y, safe;
-  do {
-    x = Math.random() * (container.clientWidth - word.offsetWidth);
-    y = Math.random() * (container.clientHeight - word.offsetHeight);
-    safe = !placed.some(pos =>
-      x < pos.x + pos.width + padding &&
-      x + word.offsetWidth + padding > pos.x &&
-      y < pos.y + pos.height + padding &&
-      y + word.offsetHeight + padding > pos.y
-    );
-  } while (!safe);
+if (floatingWords.length > 0 && container) {
+  floatingWords.forEach((word, index) => {
+    let x, y, safe;
+    do {
+      x = Math.random() * (container.clientWidth - word.offsetWidth);
+      y = Math.random() * (container.clientHeight - word.offsetHeight);
+      safe = !placed.some(pos =>
+        x < pos.x + pos.width + padding &&
+        x + word.offsetWidth + padding > pos.x &&
+        y < pos.y + pos.height + padding &&
+        y + word.offsetHeight + padding > pos.y
+      );
+    } while (!safe);
 
-  placed.push({ x, y, width: word.offsetWidth, height: word.offsetHeight });
-  word.dataset.origX = x;
-  word.dataset.origY = y;
-  gsap.set(word, { x, y });
-});
+    placed.push({ x, y, width: word.offsetWidth, height: word.offsetHeight });
+    word.dataset.origX = x;
+    word.dataset.origY = y;
+    gsap.set(word, { x, y, opacity: 0, yPercent: 10 });
 
-const repelDistance = 150;
-const repelStrength = 0.6;
-
-window.addEventListener("mousemove", e => {
-  floatingWords.forEach(word => {
-    const origX = +word.dataset.origX;
-    const origY = +word.dataset.origY;
-    const rect = word.getBoundingClientRect();
-    const dx = rect.left + rect.width / 2 - e.clientX;
-    const dy = rect.top + rect.height / 2 - e.clientY;
-    const dist = Math.hypot(dx, dy);
-
-    if (dist < repelDistance) {
-      const force = (1 - dist / repelDistance) * repelStrength;
-      gsap.to(word, {
-        x: origX + Math.cos(Math.atan2(dy, dx)) * force * 50,
-        y: origY + Math.sin(Math.atan2(dy, dx)) * force * 50,
-        duration: 0.3
-      });
-    } else {
-      gsap.to(word, { x: origX, y: origY, duration: 0.5 });
-    }
+    // Fade in secuencial
+    gsap.to(word, {
+      opacity: 1,
+      yPercent: 0,
+      duration: 0.6,
+      delay: index * 0.20,
+      ease: "power2.out"
+    });
   });
-});
+
+  const repelDistance = 150;
+  const repelStrength = 0.6;
+
+  window.addEventListener("mousemove", e => {
+    floatingWords.forEach(word => {
+      const origX = +word.dataset.origX;
+      const origY = +word.dataset.origY;
+      const rect = word.getBoundingClientRect();
+      const dx = rect.left + rect.width / 2 - e.clientX;
+      const dy = rect.top + rect.height / 2 - e.clientY;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < repelDistance) {
+        const force = (1 - dist / repelDistance) * repelStrength;
+        gsap.to(word, {
+          x: origX + Math.cos(Math.atan2(dy, dx)) * force * 50,
+          y: origY + Math.sin(Math.atan2(dy, dx)) * force * 50,
+          duration: 0.3
+        });
+      } else {
+        gsap.to(word, { x: origX, y: origY, duration: 0.5 });
+      }
+    });
+  });
+}
+
+// ==========================
+// ANIMACIÓN DEL SEPARADOR (dibujado al cargar)
+// ==========================
+function animateSeparator() {
+  const separator = document.querySelector('.separator');
+  if (!separator) return;
+
+  // Asegurar que empiece con altura 0
+  gsap.set(separator, { height: 0 });
+
+  // Animar hasta la altura completa del contenedor padre
+  gsap.to(separator, {
+    height: '96.5%',
+    duration: 1.2,
+    ease: 'power2.inOut',
+    delay: 0.2
+  });
+}
+
+// ==========================
+// ANIMACIÓN DE LOS HR (dibujado horizontal al cargar)
+// ==========================
+function animateHorizontalRules() {
+  const hrElements = document.querySelectorAll('.column.right hr');
+  if (!hrElements.length) return;
+
+  hrElements.forEach((hr, index) => {
+    gsap.set(hr, { width: 0 });
+    gsap.to(hr, {
+      width: '100%',
+      duration: 0.8,
+      ease: 'power2.inOut',
+      delay: 0.3 + (index * 0.15)
+    });
+  });
+}
+
+
 
 // ==========================
 // ANIMACIÓN PROYECTOS
 // ==========================
-gsap.utils.toArray('.project-link').forEach(link => {
-  gsap.from(link, {
-    opacity: 0,
-    y: 60,
-    duration: 0.8,
-    scrollTrigger: {
-      trigger: link,
-      start: 'top 85%',
-      scroller: leftCol
-    }
+if (leftCol) {
+  gsap.utils.toArray('.project-link').forEach(link => {
+    gsap.from(link, {
+      opacity: 0,
+      y: 60,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: link,
+        start: 'top 85%',
+        scroller: leftCol
+      }
+    });
   });
-});
+}
 
 // ==========================
 // PANEL DERECHO
 // ==========================
 const rightPanel = document.querySelector(".column.right");
 const sobreMiBtn = document.querySelector(".nav-link[href='#sobre-mi']");
-const closePanelBtn = rightPanel.querySelector(".close-panel");
+const closePanelBtn = rightPanel ? rightPanel.querySelector(".close-panel") : null;
 const aboutBlocks = document.querySelectorAll(".about-block, .column.right hr");
 const projectLinks = document.querySelectorAll("[data-project]");
 const projectDetails = document.querySelectorAll(".project-detail");
@@ -164,31 +241,37 @@ const projectDetails = document.querySelectorAll(".project-detail");
 let panelOpen = false;
 
 function openPanel() {
-  if (panelOpen) return;
+  if (panelOpen || !rightPanel) return;
   panelOpen = true;
   gsap.to(rightPanel, { right: 0, duration: 0.3 });
   document.body.style.overflow = "hidden";
 }
 
 function closePanel() {
-  if (!panelOpen) return;
+  if (!panelOpen || !rightPanel) return;
   panelOpen = false;
   gsap.to(rightPanel, { right: "-100%", duration: 0.3 });
   document.body.style.overflow = "";
 }
 
-sobreMiBtn.addEventListener("click", e => {
-  e.preventDefault();
-  showCV();
-});
+if (sobreMiBtn) {
+  sobreMiBtn.addEventListener("click", e => {
+    e.preventDefault();
+    showCV();
+  });
+}
 
-closePanelBtn.addEventListener("click", () => {
-  closePanel();
-  projectDetails.forEach(d => d.hidden = true);
-  aboutBlocks.forEach(el => el.style.display = "");
-});
+if (closePanelBtn) {
+  closePanelBtn.addEventListener("click", () => {
+    closePanel();
+    projectDetails.forEach(d => d.hidden = true);
+    aboutBlocks.forEach(el => el.style.display = "");
+  });
+}
 
-rightPanel.addEventListener("click", e => e.stopPropagation());
+if (rightPanel) {
+  rightPanel.addEventListener("click", e => e.stopPropagation());
+}
 
 // ==========================
 // PROJECT DETAIL 
@@ -271,7 +354,7 @@ document.querySelectorAll(".project-title .scramble-text").forEach(span => {
 // ==========================
 document.querySelectorAll('.project-expand').forEach(btn => {
   btn.addEventListener('click', e => {
-    e.stopPropagation(); // evita que cierre o interfiera el panel
+    e.stopPropagation();
     const href = btn.getAttribute('href');
     if (href) window.location.href = href;
   });
@@ -286,8 +369,9 @@ function showCV() {
   if (window.innerWidth <= 820) openPanel();
 }
 
-
+// ==========================
 // AUDIO MOOD - PLAY / PAUSE
+// ==========================
 document.querySelectorAll('.project-audio').forEach(wrapper => {
   const btn = wrapper.querySelector('.audio-play');
   const audio = wrapper.querySelector('audio');
@@ -307,7 +391,6 @@ document.querySelectorAll('.project-audio').forEach(wrapper => {
     }
   });
 
-  // Al terminar el audio, reset icono y clase
   audio.addEventListener('ended', () => {
     btn.classList.remove('playing');
     icon.classList.remove('bi-pause-fill');
@@ -317,5 +400,219 @@ document.querySelectorAll('.project-audio').forEach(wrapper => {
 
 
 
+// ==========================
+// ANIMACIÓN DEL TÍTULO DE CONTACTO
+// ==========================
+function animateContactTitle() {
+  // Solo ejecutar en la página de contacto
+  if (!document.body.classList.contains('contact-page')) return;
+  
+  const greeting = document.querySelector('.contact-greeting');
+  const subtext = document.querySelector('.contact-subtext');
+  
+  if (!greeting || !subtext) return;
+  
+  // Configurar estado inicial
+  gsap.set([greeting, subtext], { 
+    opacity: 0, 
+    y: 40 
+  });
+  
+  // Crear timeline para animación secuencial con delay
+  const tl = gsap.timeline({ delay: 0.3 }); // ← añade delay de 0.5 segundos
+  
+  tl.to(greeting, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: 'power2.out'
+  })
+  .to(subtext, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: 'power2.out'
+  }, '-=0.3');
+}
 
 
+
+// ==========================
+// ANIMACIÓN DEL EDITABLE WRAPPER (fade-in)
+// ==========================
+function animateEditableWrapper() {
+  // Solo ejecutar en la página de contacto
+  if (!document.body.classList.contains('contact-page')) return;
+  
+  const wrapper = document.querySelector('.editable-wrapper');
+  if (!wrapper) return;
+  
+  // Ocultar al inicio
+  gsap.set(wrapper, { opacity: 0 });
+  
+  // Fade-in suave
+  gsap.to(wrapper, {
+    opacity: 1,
+    duration: 0.8,
+    ease: 'power2.out',
+    delay: 0.5 // aparece un poco después del título
+  });
+}
+
+
+// ==========================
+// ANIMACIÓN DEL FORM IMAGE (fade-in desde la derecha)
+// ==========================
+function animateFormImage() {
+  // Solo ejecutar en la página de contacto
+  if (!document.body.classList.contains('contact-page')) return;
+  
+  const formImage = document.querySelector('.form-image');
+  if (!formImage) return;
+  
+  // Configurar estado inicial
+  gsap.set(formImage, { 
+    opacity: 0, 
+    x: 30  // viene desde la derecha
+  });
+  
+  // Animación de entrada
+  gsap.to(formImage, {
+    opacity: 1,
+    x: 0,
+    duration: 0.6,
+    ease: 'power2.out',
+    delay: 2 // aparece después del título y la foto
+  });
+}
+
+
+// ==========================
+// ANIMACIÓN DE SCROLL LINES (aparecen con scroll)
+// ==========================
+function animateScrollLines() {
+  // Solo ejecutar en la página de contacto
+  if (!document.body.classList.contains('contact-page')) return;
+  
+  const scrollLines = document.querySelectorAll('.scroll-line');
+  if (!scrollLines.length) return;
+  
+  // Configurar estado inicial de todas las líneas
+  gsap.set(scrollLines, { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.95
+  });
+  
+  // Crear ScrollTrigger para cada línea
+  scrollLines.forEach((line, index) => {
+    gsap.to(line, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: line,
+        scroller: leftCol, // el scroll es en la columna izquierda
+        start: 'top 100%',  // cuando la línea llega al 85% del viewport
+        toggleActions: 'play none none none',
+        // Opcional: un poco de stagger natural
+        // markers: true, // descomentar para depurar
+      }
+    });
+  });
+}
+
+
+// ==========================
+// ANIMACIÓN DEL STATIC CLOCK (aparece con scroll en móvil/tablet)
+// ==========================
+function animateStaticClock() {
+  // Solo ejecutar en la página de contacto
+  if (!document.body.classList.contains('contact-page')) return;
+  
+  const clockContainer = document.querySelector('.static-clock-container');
+  if (!clockContainer) return;
+  
+  // Verificar si el elemento está visible en la pantalla actual (solo en breakpoints donde display no es none)
+  const isVisible = window.getComputedStyle(clockContainer).display !== 'none';
+  if (!isVisible) return;
+  
+  // Configurar estado inicial
+  gsap.set(clockContainer, { 
+    opacity: 0, 
+    scale: 0.9,
+    y: 20
+  });
+  
+  // Animar con ScrollTrigger
+  gsap.to(clockContainer, {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    duration: 0.7,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: clockContainer,
+      scroller: leftCol,
+      start: 'top 85%',
+      toggleActions: 'play none none none'
+    }
+  });
+}
+
+
+
+// ==========================
+// ANIMACIÓN DEL MOBILE FORM WRAPPER (fade-up con scroll)
+// ==========================
+function animateMobileForm() {
+  // Solo ejecutar en la página de contacto
+  if (!document.body.classList.contains('contact-page')) return;
+  
+  const mobileFormWrapper = document.querySelector('.mobile-form-wrapper');
+  if (!mobileFormWrapper) return;
+  
+  // Verificar si el elemento está visible en la pantalla actual (solo en breakpoints donde display no es none)
+  const isVisible = window.getComputedStyle(mobileFormWrapper).display !== 'none';
+  if (!isVisible) return;
+  
+  // Configurar estado inicial - FADE UP (opacity 0 + desplazado hacia abajo)
+  gsap.set(mobileFormWrapper, { 
+    opacity: 0, 
+    y: 40,      // desplazado 40px hacia abajo
+    scale: 0.98 // ligeramente más pequeño para efecto más suave
+  });
+  
+  // Animar con ScrollTrigger cuando aparece en pantalla
+  gsap.to(mobileFormWrapper, {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 0.8,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: mobileFormWrapper,
+      scroller: '.column.left', // el scroll es en la columna izquierda
+      start: 'top 85%',         // cuando el wrapper llega al 85% del viewport
+      toggleActions: 'play none none none'
+    }
+  });
+}
+
+
+// ==========================
+// UN SOLO LOAD EVENT CON TODAS LAS ANIMACIONES
+// ==========================
+window.addEventListener('load', () => {
+  animateLogo();
+  animateSeparator();
+  animateHorizontalRules();
+  animateContactTitle();
+  animateEditableWrapper();
+  animateFormImage();
+  animateScrollLines();
+  animateStaticClock();
+  animateMobileForm(); // ← AÑADE ESTA LÍNEA
+});

@@ -136,6 +136,9 @@ a {
   width: 0.75pt;
   background-color: var(--line-soft);
   margin: 1rem 0;
+  /* Asegurar que el separador comience oculto (altura 0) */
+  height: 0;
+  transition: height 0.2s ease; /* opcional, para suavizar si algo falla */
 }
 
 
@@ -263,6 +266,23 @@ a {
   opacity: 0;
   pointer-events: auto;
 }
+
+
+/* Page transitions */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  pointer-events: none;
+}
+
+.page-transition-overlay div {
+  background: var(--text-main);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
 
 /* Floating Words */
 .floating-words {

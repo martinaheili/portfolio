@@ -139,13 +139,38 @@ window.addEventListener("resize", () => {
 
 // Scroll to top desde el logo
 logoLink.addEventListener("click", (e) => {
-  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
-    e.preventDefault(); // evita recargar
-    leftCol.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    // ir a home si no estás en index
-    window.location.href = 'index.html';
+
+  const isHome =
+    window.location.pathname.endsWith("index.html") ||
+    window.location.pathname === "/";
+
+  if (isHome) {
+
+    e.preventDefault();
+
+    leftCol.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    return;
+
   }
+
+  e.preventDefault();
+
+  if (window.overlayIn) {
+
+    window.overlayIn(() => {
+      window.location.assign("index.html");
+    });
+
+  } else {
+
+    window.location.assign("index.html");
+
+  }
+
 });
 
 // Set inicial al cargar la página
