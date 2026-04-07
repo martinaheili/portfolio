@@ -408,24 +408,27 @@ document.querySelectorAll('.project-audio').forEach(wrapper => {
 // ==========================
 // ANIMACIÓN DEL TÍTULO DE CONTACTO
 // ==========================
+let contactTitleAnimated = false;
+
 function animateContactTitle() {
-  // Solo ejecutar en la página de contacto
+  if (contactTitleAnimated) return;
+  contactTitleAnimated = true;
+
   if (!document.body.classList.contains('contact-page')) return;
   
   const greeting = document.querySelector('.contact-greeting');
   const subtext = document.querySelector('.contact-subtext');
   
   if (!greeting || !subtext) return;
-  
-  // Configurar estado inicial
+
+  // Estado inicial
   gsap.set([greeting, subtext], { 
     opacity: 0, 
     y: 40 
   });
-  
-  // Crear timeline para animación secuencial con delay
-  const tl = gsap.timeline({ delay: 0.3 }); // ← añade delay de 0.5 segundos
-  
+
+  // Timeline secuencial
+  const tl = gsap.timeline({ delay: 0.3 });
   tl.to(greeting, {
     opacity: 1,
     y: 0,
@@ -445,14 +448,18 @@ function animateContactTitle() {
 // ==========================
 // ANIMACIÓN DEL EDITABLE WRAPPER (fade-in)
 // ==========================
+let editableWrapperAnimated = false;
+
 function animateEditableWrapper() {
-  // Solo ejecutar en la página de contacto
+  if (editableWrapperAnimated) return;
+  editableWrapperAnimated = true;
+
   if (!document.body.classList.contains('contact-page')) return;
   
   const wrapper = document.querySelector('.editable-wrapper');
   if (!wrapper) return;
   
-  // Ocultar al inicio
+  // Estado inicial
   gsap.set(wrapper, { opacity: 0 });
   
   // Fade-in suave
@@ -487,7 +494,7 @@ function animateFormImage() {
     x: 0,
     duration: 0.6,
     ease: 'power2.out',
-    delay: 2 // aparece después del título y la foto
+    delay: 1.6 // aparece después del título y la foto
   });
 }
 
