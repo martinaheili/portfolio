@@ -517,8 +517,6 @@ function animateScrollLines() {
         scroller: leftCol, // el scroll es en la columna izquierda
         start: 'top 100%',  // cuando la línea llega al 85% del viewport
         toggleActions: 'play none none none',
-        // Opcional: un poco de stagger natural
-        // markers: true, // descomentar para depurar
       }
     });
   });
@@ -603,9 +601,10 @@ function animateMobileForm() {
 
 
 // ==========================
-// UN SOLO LOAD EVENT CON TODAS LAS ANIMACIONES
+// CALLBACK: se ejecuta cuando termina la transición de entrada
+// Registrado aquí, llamado desde page-transitions.js
 // ==========================
-window.addEventListener('load', () => {
+window.onTransitionComplete = function() {
   animateLogo();
   animateSeparator();
   animateHorizontalRules();
@@ -614,5 +613,5 @@ window.addEventListener('load', () => {
   animateFormImage();
   animateScrollLines();
   animateStaticClock();
-  animateMobileForm(); // ← AÑADE ESTA LÍNEA
-});
+  animateMobileForm();
+};

@@ -34,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cells = overlay.querySelectorAll("div")
 
-  // Animación de entrada “fake” que ocurre siempre al cargar la página
+  // Animación de entrada que ocurre siempre al cargar la página
+  // Ahora usa DOMContentLoaded (ya cargado en este punto) en vez de window.load
+  // para que se ejecute antes de que lleguen las imágenes pesadas
   function animateEntry() {
     gsap.set(cells, { scaleY: 1 })
     gsap.to(cells, {
@@ -44,14 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
         amount: 0.4,
         from: "random"
       },
-      ease: "power4.inOut"
+      ease: "power4.inOut",
+      // Al terminar la transición, lanzar las animaciones de logo y separador
+      onComplete: () => {
+        if (typeof window.onTransitionComplete === "function") {
+          window.onTransitionComplete()
+        }
+      }
     })
   }
 
-  // Ejecutamos la animación al cargar la página
-  window.addEventListener("load", () => {
-    animateEntry()
-  })
+  // Ejecutamos la animación directamente — el DOM ya está listo aquí
+  // No esperamos a window.load para no bloquearnos con imágenes pesadas
+  animateEntry()
 
   // Para que también sea responsive al cambiar tamaño de ventana
   window.addEventListener("resize", () => {
