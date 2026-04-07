@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 // ==========================
 // ESPERAR SOLO AL DOM (NO IMÁGENES)
 // ==========================
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
 
 // ==========================
@@ -335,9 +335,7 @@ animateMobileForm();
 // ==========================
 // REFRESH FINAL CRÍTICO
 // ==========================
-setTimeout(() => {
-  ScrollTrigger.refresh(true);
-}, 300);
+ScrollTrigger.refresh();
 
 
 });
