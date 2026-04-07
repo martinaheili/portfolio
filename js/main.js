@@ -7,24 +7,29 @@ gsap.registerPlugin(ScrollTrigger);
 // ==========================
 // ANIMACIÓN DE ENTRADA DEL LOGO (fade-in desde abajo)
 // ==========================
+let logoAnimated = false;
+
 function animateLogo() {
+
+  if (logoAnimated) return;
+  logoAnimated = true;
+
   const logo = document.querySelector('.logo');
   if (!logo) return;
 
-  // Aseguramos que empiece desde abajo e invisible
   gsap.set(logo, { 
-    opacity: 0, 
-    y: 30      // desplazado 30px hacia abajo
+    opacity: 0,
+    y: 30
   });
-  
-  // Animación de entrada: sube y aparece
+
   gsap.to(logo, {
     opacity: 1,
-    y: 0,       // vuelve a su posición original
+    y: 0,
     duration: 0.7,
     ease: 'power2.out',
-    delay: 0.2
+    delay: 0.4
   });
+
 }
 
 
@@ -186,7 +191,7 @@ function animateSeparator() {
     height: '96.5%',
     duration: 1.2,
     ease: 'power2.inOut',
-    delay: 0.2
+    delay: 0.3
   });
 }
 
@@ -203,7 +208,7 @@ function animateHorizontalRules() {
       width: '100%',
       duration: 0.8,
       ease: 'power2.inOut',
-      delay: 0.3 + (index * 0.15)
+      delay: 0.4 + (index * 0.15)
     });
   });
 }
@@ -601,10 +606,10 @@ function animateMobileForm() {
 
 
 // ==========================
-// CALLBACK: se ejecuta cuando termina la transición de entrada
-// Registrado aquí, llamado desde page-transitions.js
+// ANIMACIONES DE ENTRADA (independientes de transición)
 // ==========================
-window.onTransitionComplete = function() {
+
+function runEntryAnimations() {
   animateLogo();
   animateSeparator();
   animateHorizontalRules();
@@ -614,4 +619,14 @@ window.onTransitionComplete = function() {
   animateScrollLines();
   animateStaticClock();
   animateMobileForm();
-};
+}
+
+// Ejecutar al cargar la página directamente
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", runEntryAnimations);
+} else {
+  runEntryAnimations();
+}
+
+// Mantener compatibilidad con transición entre páginas
+window.onTransitionComplete = runEntryAnimations;
