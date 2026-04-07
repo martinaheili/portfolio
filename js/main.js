@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 // ==========================
 // ESPERAR SOLO AL DOM (NO IMÁGENES)
 // ==========================
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
 
 
 // ==========================
@@ -321,6 +321,8 @@ if (rightPanel) {
 // ==========================
 // EJECUTAR ANIMACIONES
 // ==========================
+window.addEventListener("pageTransitionReady", () => {
+
 animateLogo();
 animateSeparator();
 animateHorizontalRules();
@@ -331,11 +333,19 @@ animateScrollLines();
 animateStaticClock();
 animateMobileForm();
 
+setTimeout(() => {
+  ScrollTrigger.refresh(true);
+}, 300);
+
+});
+
 
 // ==========================
 // REFRESH FINAL CRÍTICO
 // ==========================
-ScrollTrigger.refresh();
+setTimeout(() => {
+  ScrollTrigger.refresh(true);
+}, 300);
 
 
 });
