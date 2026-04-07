@@ -3,55 +3,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".page-transition-overlay")
   if (!overlay) return
 
+  // Definir filas y columnas según ancho de pantalla
   let rows, cols
-  let cells
+  const screenWidth = window.innerWidth
 
-  function getGridConfig(width) {
-
-    if (width < 480) {
-      return { rows: 8, cols: 2 }
-    }
-
-    if (width < 768) {
-      return { rows: 9, cols: 3 }
-    }
-
-    if (width < 1024) {
-      return { rows: 8, cols: 4 }
-    }
-
-    return { rows: 8, cols: 6 }
-
+  if (screenWidth < 480) {
+    rows = 8
+    cols = 2
+  } else if (screenWidth < 768) {
+    rows = 9
+    cols = 3
+  } else if (screenWidth < 1024) {
+    rows = 8
+    cols = 4
+  } else {
+    rows = 8
+    cols = 6
   }
 
-  function buildGrid(rows, cols) {
+  const total = rows * cols
+  overlay.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
 
-    const total = rows * cols
-
-    overlay.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
-
-    overlay.innerHTML = ""
-
+  // Crear celdas si no existen
+  if (!overlay.children.length) {
     for (let i = 0; i < total; i++) {
-
       const cell = document.createElement("div")
-
       overlay.appendChild(cell)
-
     }
-
-    cells = overlay.querySelectorAll("div")
-
   }
 
+  const cells = overlay.querySelectorAll("div")
+
+  // Animación de entrada “fake” que ocurre siempre al cargar la página
   function animateEntry() {
-
-    if (typeof gsap === "undefined") return
-
-    gsap.set(cells, {
-      scaleY: 1
-    })
-
+    gsap.set(cells, { scaleY: 1 })
     gsap.to(cells, {
       scaleY: 0,
       duration: 0.5,
@@ -61,33 +46,43 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       ease: "power4.inOut"
     })
-
   }
 
-  const initialConfig = getGridConfig(window.innerWidth)
-
-  buildGrid(initialConfig.rows, initialConfig.cols)
-
-  requestAnimationFrame(() => {
-
+  // Ejecutamos la animación al cargar la página
+  window.addEventListener("load", () => {
     animateEntry()
-
   })
 
+  // Para que también sea responsive al cambiar tamaño de ventana
   window.addEventListener("resize", () => {
+    let newRows, newCols
+    const newWidth = window.innerWidth
 
-    const newConfig = getGridConfig(window.innerWidth)
-
-    const currentCells = overlay.children.length
-
-    const expectedCells = newConfig.rows * newConfig.cols
-
-    if (currentCells !== expectedCells) {
-
-      buildGrid(newConfig.rows, newConfig.cols)
-
+    if (newWidth < 480) {
+      newRows = 8
+      newCols = 2
+    } else if (newWidth < 768) {
+      newRows = 9
+      newCols = 3
+    } else if (newWidth < 1024) {
+      newRows = 8
+      newCols = 4
+    } else {
+      newRows = 8
+      newCols = 6
     }
 
+    overlay.style.gridTemplateColumns = `repeat(${newCols}, 1fr)`
+
+    // Ajustar cantidad de celdas si cambia significativamente
+    const newTotal = newRows * newCols
+    if (newTotal !== overlay.children.length) {
+      overlay.innerHTML = ""
+      for (let i = 0; i < newTotal; i++) {
+        const cell = document.createElement("div")
+        overlay.appendChild(cell)
+      }
+    }
   })
 
 })
