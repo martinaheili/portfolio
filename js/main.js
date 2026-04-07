@@ -321,8 +321,6 @@ if (rightPanel) {
 // ==========================
 // EJECUTAR ANIMACIONES
 // ==========================
-window.addEventListener("pageTransitionReady", () => {
-
 animateLogo();
 animateSeparator();
 animateHorizontalRules();
@@ -332,12 +330,6 @@ animateFormImage();
 animateScrollLines();
 animateStaticClock();
 animateMobileForm();
-
-setTimeout(() => {
-  ScrollTrigger.refresh(true);
-}, 300);
-
-});
 
 
 // ==========================
