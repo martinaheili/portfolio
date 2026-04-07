@@ -274,12 +274,12 @@ a {
   inset: 0;
   z-index: 9999;
   display: grid;
+  grid-template-columns: repeat(6, 1fr);
   pointer-events: none;
 }
 
 .page-transition-overlay div {
-  background: var(--text-main);
-  transform: scaleY(0);
+  background: var(--bg-invert);
   transform-origin: top;
 }
 
