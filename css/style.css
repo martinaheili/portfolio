@@ -1087,6 +1087,7 @@ a {
   .contact-scroll-texts {display: none;}
 
   canvas[style*="pointer-events: none"] { display: none !important; }
+  .cursor { display: none !important; }
   .static-clock-container { display: block; margin-left: -1.8rem; }
   .contact-success { 
     height: auto;
