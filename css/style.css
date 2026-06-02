@@ -52,7 +52,7 @@
 /* ============================= */
 @font-face {
   font-family: 'TeX Gyre Heros Cn';
-  src: url('../fonts/texgyreheroscn-bold.otf') format('opentype');
+  src: url('../fonts/texgyreheroscn-bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
